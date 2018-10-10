@@ -6,6 +6,7 @@ use App\Category;
 use App\Comment;
 use App\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {
@@ -29,9 +30,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->is('shop/category/*')) // check the patten in url and decide
+        if ($request->is(App::getLocale() . '/shop/category/*')) // check the patten in url and decide
         {
-            $categories = Category::find($request->segment(3));
+            $categories = Category::getCategory()->where('id',$request->segment(4))->first();
+        
             $name = $categories->name;
             $items = Item::where('category_id',$categories->id)->paginate(4);
         } else {

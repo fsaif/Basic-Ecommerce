@@ -1,10 +1,10 @@
 .size-48 {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: bold;
 }
 
 @media (max-width: 991.98px) {
-    .size-48 {e
+    .size-48 {
         font-size: 24px;
     }
 }

@@ -18,35 +18,35 @@
                         <tr>
                             <td>
                                 <i class="far fa-calendar-alt"></i>
-                                Added Date
+                                @lang('app.item_a')
                             </td>
                             <td>{{ $item->created_at }}</td>
                         </tr>
                         <tr>
                             <td>
                                 <i class="far fa-money-bill-alt"></i>
-                                price
+                                @lang('app.item_b')
                             </td>
                             <td>${{ $item->price }}</td>
                         </tr>
                         <tr>
                             <td>
                                 <i class="far fa-caret-square-right"></i>
-                                Made in
+                                @lang('app.item_c')
                             </td>
                             <td>{{ $item->country }}</td>
                         </tr>
                         <tr>
                             <td>
                                 <i class="fas fa-tags"></i>
-                                Category
+                                @lang('app.item_d')
                             </td>
                             <td>{{ $item->category->name }}</td>
                         </tr>
                         <tr>
                             <td>
                                 <i class="far fa-user"></i>
-                                Added by
+                                @lang('app.item_e')
                             </td>
                             <td>{{ $item->user->username }}</td>
                         </tr>
@@ -63,10 +63,10 @@
             <form class="needs-validation" method="post" action="{{ route('addcomment.route', $item->id) }}">
                 @csrf
                 <div class="form-group">
-                    <label for="Textarea2">Add your comments</label>
+                    <label for="Textarea2">@lang('app.item_f')</label>
                     <textarea class="form-control" name="comment" id="Textarea2" rows="3" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Add comment</button>
+                <button type="submit" class="btn btn-primary">@lang('app.item_g')</button>
             </form>
         </div>
         @endauth

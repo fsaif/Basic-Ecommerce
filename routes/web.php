@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', 'HomeController@index');
+Route::get('lang/{language}', 'LanguageController@switchLang')->name('lang.switch');
 
 // Home Routes...
 Route::get('/shop', 'HomeController@index')->name('homelink');

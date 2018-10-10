@@ -27,19 +27,53 @@
 
                     @guest
                             <ul class="nav justify-content-end">
+
+                                    <li class="nav-item dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                                {{ app()->getLocale() }}
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                @foreach (config('translatable.locales') as $lang => $language)
+                                                    @if ($lang != app()->getLocale())
+                                                        <li>
+                                                            <a href="{{ route('lang.switch', $lang) }}">
+                                                                {{ $language }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        </li>
                                 <!-- Authentication Links -->
                                 <li class="nav-item">
-                                    <a class="nav-link px-0" href="{{ route('signin') }}">Login</a>
+                                    <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
                                 </li>
                                 <li class="nav-item disabled">
                                     <a class="nav-link px-0">|</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link px-0" href="{{ route('signup') }}">Signup</a>
+                                    <a class="nav-link px-0" href="{{ route('signup') }}">@lang('app.link_b')</a>
                                 </li>
+                                
                             </ul>
                     @else
                         <ul class="nav justify-content-start">
+                                <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                            {{ app()->getLocale() }}
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (config('translatable.locales') as $lang => $language)
+                                                @if ($lang != app()->getLocale())
+                                                    <li>
+                                                        <a href="{{ route('lang.switch', $lang) }}">
+                                                            {{ $language }}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0">
                                     <i class="fas fa-user-circle"></i>
@@ -51,13 +85,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('myprofile.route') }}">My profile</a>
-                                    <a class="dropdown-item" href="{{ route('additemform.route') }}">New item</a>
-                                    <a class="dropdown-item" href="{{ route('myitemslist.route') }}">My items</a>
+                                    <a class="dropdown-item" href="{{ route('myprofile.route') }}">@lang('app.dropdown_a')</a>
+                                    <a class="dropdown-item" href="{{ route('additemform.route') }}">@lang('app.dropdown_b')</a>
+                                    <a class="dropdown-item" href="{{ route('myitemslist.route') }}">@lang('app.dropdown_c')</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        @lang('app.dropdown_d')
+                                        {{-- {{ __('Logout') }} --}}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -71,7 +106,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('homelink') }}">Homepage</a>
+                <a class="navbar-brand" href="{{ route('homelink') }}">@lang('app.brand')</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

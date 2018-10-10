@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -39,6 +40,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->redirectTo = route('home');
     }
 
     public function showRegistrationForm()
@@ -71,7 +73,7 @@ class RegisterController extends Controller
         $user->save();
         auth()->guard()->login($user);
 
-        return redirect()->to('/shop/home');
+        return Redirect::route('home');
     }
 
     /**
