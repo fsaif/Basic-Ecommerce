@@ -18,7 +18,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- Styles -->
+    @if (app()->getLocale() == 'en')
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @else
+    <link href="{{ asset('css/app_rtl.css') }}" rel="stylesheet">
+    @endif
+
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -28,22 +33,17 @@
                     @guest
                             <ul class="nav justify-content-end">
 
-                                    <li class="nav-item dropdown">
-                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                                {{ app()->getLocale() }}
-                                            </a>
-                                            <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                            
                                                 @foreach (config('translatable.locales') as $lang => $language)
                                                     @if ($lang != app()->getLocale())
                                                         <li>
-                                                            <a href="{{ route('lang.switch', $lang) }}">
+                                                            <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                                                 {{ $language }}
                                                             </a>
                                                         </li>
                                                     @endif
-                                                @endforeach
-                                            </ul>
-                                        </li>
+                                                @endforeach                                        </li>
                                 <!-- Authentication Links -->
                                 <li class="nav-item">
                                     <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
@@ -58,21 +58,16 @@
                             </ul>
                     @else
                         <ul class="nav justify-content-start">
-                                <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                            {{ app()->getLocale() }}
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            @foreach (config('translatable.locales') as $lang => $language)
-                                                @if ($lang != app()->getLocale())
-                                                    <li>
-                                                        <a href="{{ route('lang.switch', $lang) }}">
-                                                            {{ $language }}
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
+                                <li class="nav-item">
+                                        @foreach (config('translatable.locales') as $lang => $language)
+                                                    @if ($lang != app()->getLocale())
+                                                        <li>
+                                                            <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
+                                                                {{ $language }}
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                @endforeach  
                                     </li>
                             <li class="nav-item">
                                 <a class="nav-link px-0">

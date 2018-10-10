@@ -26,7 +26,7 @@ class ProductController extends Controller
 
     public function showCreateForm()
     {
-        $categories = Category::all();
+        $categories = Category::getCategory()->get();
         return view('addProduct')->with('categories', $categories);
     }
 

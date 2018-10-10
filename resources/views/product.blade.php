@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
 
-        <h2 class="text-center font-weight-bold"> {{ $item->name }} </h2>
 
         <div class="row">
             <div class="col-md-3">

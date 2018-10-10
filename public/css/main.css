@@ -1,12 +1,6 @@
 .size-48 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
-}
-
-@media (max-width: 991.98px) {
-    .size-48 {
-        font-size: 24px;
-    }
 }
 
 .price-label {
