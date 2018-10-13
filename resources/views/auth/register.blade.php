@@ -20,8 +20,11 @@
                 @csrf
 
                 <div class="form-group">
-                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" placeholder="@lang('app.form_a')" value="{{ old('username') }}" required autofocus>
-
+                    @if(!empty($name))
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="name" value="{{$name}}" placeholder="@lang('app.form_a')" required autofocus>
+                    @else
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="name" value="{{ old('username') }}" placeholder="@lang('app.form_a')" required autofocus>
+                    @endif    
                     @if ($errors->has('username'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('username') }}</strong>
@@ -44,8 +47,11 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="@lang('app.form_d')" value="{{ old('email') }}" required>
-
+                    @if(!empty($email))
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{$email}}" placeholder="@lang('app.form_d')" required>
+                        @else
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="@lang('app.form_d')" required>
+                        @endif
                     @if ($errors->has('email'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('email') }}</strong>
@@ -63,6 +69,17 @@
                                 <img id="output" src="{{ asset("storage/users/icon.jpg") }}" alt="not found" class="img-fluid img-thumbnail"/>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-md-4 control-label">Register With</label>
+                    <div class="col-md-6">
+                            <a href="{{ route('socialLogin','facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x"></i></a>
+
+                            <a href="{{ route('socialLogin','twitter') }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter fa-2x"></i></a>
+
+                            <a href="{{ route('socialLogin','google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus fa-2x text-danger"></i></a>
                     </div>
                 </div>
 

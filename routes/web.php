@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,8 @@ Route::post('/account/profile/edit', 'ProfileController@editMyProfile')->name('e
 
 // comment form Route...
 Route::post('/shop/product/comment/{id}', 'ProductController@addComment')->name('addcomment.route');
+
+// social login routes...
+Route::get('/auth/signin/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|google')->name('socialLogin');
+
+Route::get('/auth/signin/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|google');

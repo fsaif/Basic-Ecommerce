@@ -38,13 +38,22 @@
                         @endif
                     </div>
 
+                    <div class="form-group row">
+                        <label for="name" class="col-md-4 control-label">Register With</label>
+                        <div class="col-md-6">
+                                <a href="{{ route('socialLogin','facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x"></i></a>
+    
+                                <a href="{{ route('socialLogin','twitter') }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter fa-2x"></i></a>
+    
+                                <a href="{{ route('socialLogin','google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus fa-2x text-danger"></i></a>
+                        </div>
+                    </div>
+
 
                     <div class="form-group mb-0">
                         <button type="submit" class="btn btn-primary form-control">
                             @lang('app.link_a')
                         </button>
-
-
                     </div>
                 </form>
             </div>
