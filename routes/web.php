@@ -63,3 +63,6 @@ Route::post('/shop/product/comment/{id}', 'ProductController@addComment')->name(
 Route::get('/auth/signin/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|google')->name('socialLogin');
 
 Route::get('/auth/signin/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|google');
+
+// Dashboard routes...
+Route::get('/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');

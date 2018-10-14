@@ -71,6 +71,7 @@ class RegisterController extends Controller
         }
 
         $user->save();
+        $user->attachRole('user');
         auth()->guard()->login($user);
 
         return Redirect::route('home');

@@ -21,9 +21,9 @@
 
                 <div class="form-group">
                     @if(!empty($name))
-                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="name" value="{{$name}}" placeholder="@lang('app.form_a')" required autofocus>
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{$name}}" placeholder="@lang('app.form_a')" required autofocus>
                     @else
-                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="name" value="{{ old('username') }}" placeholder="@lang('app.form_a')" required autofocus>
+                        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="@lang('app.form_a')" required autofocus>
                     @endif    
                     @if ($errors->has('username'))
                         <span class="invalid-feedback" role="alert">
