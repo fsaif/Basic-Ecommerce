@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+
+        @if(session('alert_success'))
+            <div class="alert alert-success">{{session('alert_success')}}</div>
+        @elseif(session('alert_danger'))
+            <div class="alert alert-danger">{{session('alert_danger')}}</div>
+        @endif
+
         <h2 class="text-center font-weight-bold">@lang('app.dropdown_c')</h2>
         <div class="row">
             @foreach($items as $item)

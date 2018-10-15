@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         $newItem->save();
 
-        return redirect(route('myitems.route'));
+        return redirect()->route('myitems.route')->with('alert_success','Item was added successfully');
 
     }
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
 
         $item->save();
 
-        return redirect(route('myitems.route'));
+        return redirect()->route('myitems.route')->with('alert_success','Item was updated successfully');
     }
 
     public function deleteItem($id)
@@ -92,7 +92,7 @@ class ProductController extends Controller
         $item = Item::find($id);
         $item->delete();
 
-        return redirect(route('myitems.route'));
+        return redirect()->route('myitems.route')->with('alert_danger','Item was deleted successfully');
     }
 
     public function addComment(Request $request, $id)

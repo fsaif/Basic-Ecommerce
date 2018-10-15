@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+
+        @if(session('alert_success'))
+            <div class="alert alert-success">{{session('alert_success')}}</div>
+        @endif
+
         <h2 class="text-center font-weight-bold">@lang('app.dropdown_a')</h2>
         <div class="card">
             <div class="card-header text-white bg-primary">

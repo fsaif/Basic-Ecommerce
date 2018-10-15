@@ -2,10 +2,6 @@
 
 @section('content')
     <div class="container">
-        @role('super_admin')
-        <h1>Welcome Adminstrator</h1>
-        @endrole
-
         <h2 class="text-center font-weight-bold">{{ $name }}</h2>
         <div class="row">
             @foreach($items as $item)

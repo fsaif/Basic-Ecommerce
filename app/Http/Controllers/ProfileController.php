@@ -49,7 +49,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect(route('myprofile.route'));
+        return redirect()->route('myprofile.route')->with('alert_success','Profile was updated successfully');
     }
 
 }

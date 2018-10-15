@@ -65,4 +65,13 @@ Route::get('/auth/signin/{social}','Auth\LoginController@socialLogin')->where('s
 Route::get('/auth/signin/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|google');
 
 // Dashboard routes...
-Route::get('/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');
+Route::get('/admin/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');
+
+// Administrator Control Panel Routes...
+Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], function () {
+
+    Route::resource('users', 'Dashboard\UsersController');
+    Route::resource('categories', 'Dashboard\CategoriesController');
+    Route::resource('products', 'Dashboard\ProductsController');
+
+});

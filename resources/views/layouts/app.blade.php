@@ -61,54 +61,52 @@
         @else
             <ul class="nav justify-content-start">
                 <li class="nav-item">
-                @foreach (config('translatable.locales') as $lang => $language)
-                    @if ($lang != app()->getLocale())
+                @foreach(config('translatable.locales') as $lang => $language)
+                    @if($lang != app()->getLocale())
                         <li>
                             <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                 {{ $language }}
                             </a>
                         </li>
-                        @endif
-                        @endforeach
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-0">
-                                <i class="fas fa-user-circle"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle px-1" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->username }} <span class="caret"></span>
-                            </a>
+                    @endif
+                @endforeach
 
-                            <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                @role('user')
-                                    <a class="dropdown-item"
-                                       href="{{ route('myprofile.route') }}">@lang('app.dropdown_a')</a>
-                                    <a class="dropdown-item"
-                                       href="{{ route('additemform.route') }}">@lang('app.dropdown_b')</a>
-                                    <a class="dropdown-item"
-                                       href="{{ route('myitemslist.route') }}">@lang('app.dropdown_c')</a>
-                                @endrole
+                <li class="nav-item">
+                    <a class="nav-link px-0">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle px-1" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->username }} <span class="caret"></span>
+                    </a>
 
-                                @role('super_admin')
-                                    <a class="dropdown-item"
-                                       href="{{ route('dashboard') }}">Dashboard</a>
-                                @endrole
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                    @lang('app.dropdown_d')
-                                    {{-- {{ __('Logout') }} --}}
-                                </a>
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
+                        <a class="dropdown-item"
+                           href="{{ route('myprofile.route') }}">@lang('app.dropdown_a')</a>
+                        <a class="dropdown-item"
+                           href="{{ route('additemform.route') }}">@lang('app.dropdown_b')</a>
+                        <a class="dropdown-item"
+                           href="{{ route('myitemslist.route') }}">@lang('app.dropdown_c')</a>
+
+                        @role('super_admin')
+                        <a class="dropdown-item"
+                           href="{{ route('dashboard') }}">Dashboard</a>
+                        @endrole
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                            @lang('app.dropdown_d')
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                              style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
             </ul>
         @endguest
     </div>
