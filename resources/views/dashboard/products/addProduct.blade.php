@@ -4,7 +4,7 @@
 
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">Add User</h3>
+            <h3 class="box-title">Add Product</h3>
         </div>
         <!-- form start -->
         <form class="form-horizontal" method="POST" action="{{ route('products.store') }}"

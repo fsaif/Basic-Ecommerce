@@ -70,8 +70,11 @@ Route::get('/admin/dashboard', 'Dashboard\DashboardController@showDashboard')->n
 // Administrator Control Panel Routes...
 Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], function () {
 
+    Route::get('/users/delete/{id}', 'Dashboard\UsersController@delete')->name('users.delete');
     Route::resource('users', 'Dashboard\UsersController');
+    Route::get('/categories/delete/{id}', 'Dashboard\CategoriesController@delete')->name('categories.delete');
     Route::resource('categories', 'Dashboard\CategoriesController');
+    Route::get('/products/delete/{id}', 'Dashboard\ProductsController@delete')->name('products.delete');
     Route::resource('products', 'Dashboard\ProductsController');
 
 });

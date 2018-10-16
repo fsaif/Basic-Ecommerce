@@ -84,6 +84,18 @@ class CategoriesController extends Controller
     }
 
     /**
+     * Show the confirmation resource for delete.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $cat = Category::find($id);
+        return view('dashboard.categories.deleteCategory')->with('cat', $cat);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

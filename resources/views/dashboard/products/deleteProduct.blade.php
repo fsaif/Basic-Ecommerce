@@ -4,7 +4,7 @@
 
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Product Details</h3>
+            <h3 class="box-title">Delete Product Confirmation</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -24,34 +24,30 @@
                     </tr>
                     <tr>
                         <td>
-                            <i class="fa fa-calendar-alt"></i>
                             Create Date
                         </td>
                         <td>{{ $item->created_at }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="far fa-money-bill-alt"></i>
                             Price
                         </td>
                         <td>${{ $item->price }}</td>
                     </tr>
                     <tr>
-                        <td><i class="far fa-caret-square-right"></i>
+                        <td>
                             Country
                         </td>
                         <td>{{ $item->country }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="fas fa-tags"></i>
                             Category
                         </td>
                         <td>{{ $item->category->name_en }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="far fa-user"></i>
                             Belongs to
                         </td>
                         <td>{{ $item->user->username }}</td>
@@ -63,6 +59,12 @@
         </div>
         <div class="box-footer">
             <a class="btn btn-default" href="{{ route('dashboard') }}">Cancel</a>
+            <form action="{{ route('products.destroy', $item->id) }}" method="POST"
+                  style="display: inline-block" class="pull-right">
+                @csrf
+                @method('DELETE')
+                <input type="submit" class="btn btn-danger" value="Confirm"/>
+            </form>
         </div>
 
 @endsection

@@ -118,6 +118,19 @@ class UsersController extends Controller
     }
 
     /**
+     * Show the confirmation resource for delete.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $user = User::find($id);
+        return view('dashboard.users.deleteUser')->with('user', $user);
+    }
+
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

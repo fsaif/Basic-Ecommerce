@@ -167,25 +167,26 @@
      user experience. -->
 
 <!-- DataTables -->
-<script src="{{ asset('adminlte/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+<script defer src="{{ asset('adminlte/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script defer src="{{ asset('adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ asset('adminlte/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('adminlte/fastclick/lib/fastclick.js') }}"></script>
 <!-- page script -->
 <script>
-    $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
+    $(document).ready(function () {
+
+        $('#table-list').DataTable({
+            'paging': true,
+            'lengthChange': true,
+            'searching': true,
+            'ordering': true,
+            'info': true,
+            'autoWidth': true
         })
-    })
+
+    });
 </script>
 
 <script src="{{ asset('js/plugins.js') }}" defer></script>

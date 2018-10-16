@@ -120,6 +120,18 @@ class ProductsController extends Controller
     }
 
     /**
+     * Show the confirmation resource for delete.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete($id)
+    {
+        $item = Item::find($id);
+        return view('dashboard.products.deleteProduct')->with('item', $item);
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int $id
