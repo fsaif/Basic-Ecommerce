@@ -33,6 +33,7 @@ class ProfileController extends Controller
     public function editMyProfile(Request $request)
     {
         $id = Auth::id();
+        User::validator($request->all())->validate();
         $user = User::find($id);
         $user->username = $request->input('username');
         $user->email = $request->input('email');

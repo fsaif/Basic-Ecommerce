@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\App;
 class Category extends Model
 {
     protected $fillable = [
-        'id', 'name',
+        'name_en', 'name_ar',
     ];
+
+    protected $primaryKey = 'id';
 
     public function items(){
         return $this->hasMany('App\Item');

@@ -5,15 +5,19 @@
 
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <img src="{{ asset('storage/items/'.$item->img) }}" class="img-fluid img-thumbnail"/>
             </div>
-            <div class="col-md-9">
-                <h5>{{ $item->name }}</h5>
-                <p>{{ $item->description }}</p>
+            <div class="col-md-8">
                 <div class="table-responsive-sm">
                     <table class="table table-striped">
                         <tbody>
+                        <tr>
+                            <td colspan="2"><b>{{ $item->name }}</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>{{ $item->description }}</b></td>
+                        </tr>
                         <tr>
                             <td>
                                 <i class="far fa-calendar-alt"></i>
@@ -40,7 +44,7 @@
                                 <i class="fas fa-tags"></i>
                                 @lang('app.item_d')
                             </td>
-                            <td>{{ $item->category->name }}</td>
+                            <td>{{ $category }}</td>
                         </tr>
                         <tr>
                             <td>
@@ -62,29 +66,30 @@
             <form class="needs-validation" method="post" action="{{ route('addcomment.route', $item->id) }}">
                 @csrf
                 <div class="form-group">
-                    <label for="Textarea2">@lang('app.item_f')</label>
-                    <textarea class="form-control" name="comment" id="Textarea2" rows="3" required></textarea>
+                    <label>@lang('app.item_f')</label>
+                    <textarea class="form-control" name="comment" rows="2" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">@lang('app.item_g')</button>
+                <button type="submit" class="btn btn-outline-secondary">@lang('app.item_g')</button>
             </form>
         </div>
         @endauth
 
+
         <div class="row">
             @foreach($comments as $comment)
                 <div class="col-12">
-                    <article class="comment">
-                        <a class="comment-img">
+                    <div class="row comment">
+                        <div class="col-1 comment-img">
                             <img src="{{ asset('storage/users/'.$comment->user->img) }}" alt="" width="50" height="50">
-                        </a>
+                        </div>
 
-                        <div class="comment-body">
+                        <div class="col-11 comment-body">
                             <div class="text">
                                 <p>{{ $comment->comment }}</p>
                             </div>
-                            <p class="attribution">by {{ $comment->user->username }} at {{ $comment->created_at }}</p>
+                            <p class="attribution">@lang('app.comment_by') {{ $comment->user->username }} @lang('app.comment_at') {{ $comment->created_at }}</p>
                         </div>
-                    </article>
+                    </div>
                 </div>
             @endforeach
         </div>

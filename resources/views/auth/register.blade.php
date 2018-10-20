@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="@lang('app.form_c')" required>
+                    <input type="password" class="form-control" name="password_confirmation" placeholder="@lang('app.form_c')" required>
                 </div>
 
                 <div class="form-group">
@@ -73,13 +73,13 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 control-label">Register With</label>
+                    <label for="name" class="col-md-4 control-label">@lang('app.register_with')</label>
                     <div class="col-md-6">
                             <a href="{{ route('socialLogin','facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x"></i></a>
 
                             <a href="{{ route('socialLogin','twitter') }}" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter fa-2x"></i></a>
 
-                            <a href="{{ route('socialLogin','google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus fa-2x text-danger"></i></a>
+                            <a href="{{ route('socialLogin','google') }}" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus fa-2x"></i></a>
                     </div>
                 </div>
 

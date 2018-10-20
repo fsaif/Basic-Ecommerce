@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Validator;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'username', 'email', 'password', 'img',
     ];
 
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -37,6 +39,16 @@ class User extends Authenticatable
 
     public function comments(){
         return $this->hasMany('App\Comment');
+    }
+
+    public static function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
     }
 
 }

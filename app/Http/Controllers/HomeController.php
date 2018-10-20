@@ -32,30 +32,28 @@ class HomeController extends Controller
     {
         if ($request->is(App::getLocale() . '/shop/category/*')) // check the patten in url and decide
         {
-            $categories = Category::getCategory()->where('id',$request->segment(4))->first();
-        
+            $categories = Category::getCategory()->where('id', $request->segment(4))->first();
             $name = $categories->name;
-            $items = Item::where('category_id',$categories->id)->paginate(4);
+            $items = Item::where('category_id', $categories->id)->paginate(12);
         } else {
-            $items = Item::paginate(4);
-            if(App::getLocale() == 'en'){
+            $items = Item::paginate(12);
+            if (App::getLocale() == 'en') {
                 $name = 'Home Page';
-            } else if(App::getLocale() == 'ar') {
+            } else if (App::getLocale() == 'ar') {
                 $name = 'الصفحة الرئيسية';
             }
         }
 
-        return view('home' )->with('items', $items)->with('name',$name);
+        return view('home')->with('items', $items)->with('name', $name);
     }
 
     public function showProduct($id)
     {
         $item = Item::find($id);
+        $category = Category::getCategory()->where('id', $item->category_id)->first();
         $comments = Comment::all()->where('item_id', $id);
-        return view('product')->with('item', $item)->with('comments', $comments);
+        return view('product')->with('item', $item)->with('comments', $comments)->with('category', $category->name);
     }
-
-
 
 
 }

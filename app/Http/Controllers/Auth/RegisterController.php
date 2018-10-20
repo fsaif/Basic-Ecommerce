@@ -23,14 +23,14 @@ class RegisterController extends Controller
     |
     */
 
-    //use RegistersUsers;
+    use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/shop/home';
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -43,39 +43,6 @@ class RegisterController extends Controller
         $this->redirectTo = route('home');
     }
 
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
-
-    public function register(Request $request)
-    {
-        /** @var User $user */
-        $validatedData = $request->validate([
-            'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'img' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $validatedData['password'] = Hash::make(array_get($validatedData, 'password'));
-        $user = app(User::class)->create($validatedData);
-
-        if($request->hasfile('img'))
-        {
-            $file = $request->file('img');
-            $name = $file->getClientOriginalName();
-            $filename =time().$name;
-            $file->move('storage/users/', $filename);
-            $user->img = $filename;
-        }
-
-        $user->save();
-        $user->attachRole('user');
-        auth()->guard()->login($user);
-
-        return Redirect::route('home');
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -83,7 +50,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    /*protected function validator(array $data)
+    protected function validator(array $data)
     {
         return Validator::make($data, [
             'username' => 'required|string|max:255|unique:users',
@@ -91,7 +58,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    }*/
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -99,13 +66,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    /*protected function create(array $data)
+    protected function create(array $data)
     {
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'img' => $data['img'],
+            'img' => (isset($data['img']) ? $data['img'] : 'user.jpg' ),
         ]);
-    }*/
+    }
 }

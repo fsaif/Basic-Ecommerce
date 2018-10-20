@@ -33,31 +33,30 @@
 
         @guest
             <ul class="nav justify-content-end">
-
                 <li class="nav-item">
-
                 @foreach (config('translatable.locales') as $lang => $language)
-                    @if ($lang != app()->getLocale())
+                    @if($lang != app()->getLocale())
                         <li>
                             <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                 {{ $language }}
                             </a>
                         </li>
-                        @endif
-                        @endforeach
-                        </li>
-                        <!-- Authentication Links -->
-                        <li class="nav-item">
-                            <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
-                        </li>
-                        <li class="nav-item disabled">
-                            <a class="nav-link px-0">|</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-0" href="{{ route('signup') }}">@lang('app.link_b')</a>
-                        </li>
+                @endif
+            @endforeach
+
+            <!-- Authentication Links -->
+                <li class="nav-item">
+                    <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link px-0">|</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-0" href="{{ route('signup') }}">@lang('app.link_b')</a>
+                </li>
 
             </ul>
+
         @else
             <ul class="nav justify-content-start">
                 <li class="nav-item">

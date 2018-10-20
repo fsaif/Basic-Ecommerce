@@ -98,6 +98,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'img' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
         $user = User::find($id);
         $user->username = $request->input('username');
         $user->email = $request->input('email');

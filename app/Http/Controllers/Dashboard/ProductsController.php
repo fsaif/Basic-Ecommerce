@@ -42,7 +42,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         $id = Auth::id();
-
+        Item::validator($request->all());
         $newItem = new Item();
         $newItem->name = $request->input('name');
         $newItem->description = $request->input('description');
@@ -99,6 +99,7 @@ class ProductsController extends Controller
     public function update(Request $request, $id)
     {
         $item = Item::find($id);
+        Item::validator($request->all());
         $item->name = $request->input('name');
         $item->description = $request->input('description');
         $item->price = $request->input('price');

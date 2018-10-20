@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Comment extends Model
 {
     protected $fillable = [
-        'id', 'comment',
+        'comment', 'user_id', 'item_id',
     ];
+
+    protected  $primaryKey = 'id';
 
     public function user(){
         return $this->belongsTo('App\User');

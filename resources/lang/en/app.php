@@ -49,7 +49,13 @@ return [
     'pform_g2' => 'Edit item',
 
     'mform_t' => 'Edit Profile',
-    'mform_t2' => 'My Information',    
+    'mform_t2' => 'My Information',
+
+    'register_with' => 'Register With',
+    'login_with' => 'Login With',
+
+    'comment_by' => 'by',
+    'comment_at' => 'at',
     
 ];
 ?>

@@ -18,13 +18,15 @@
                     <span class="price-label">${{ $item->price }}</span>
                     <div class="card-body">
                         <h4 class="card-title"><a href="{{ route('product.route', $item->id) }}">{{ $item->name }}</a></h4>
-                        <p class="card-text">{{ $item->description }}</p>
-                        <p class="card-text text-right">
-                            <small class="text-muted"><a href="{{ route('edititemform.route', $item->id) }}">@lang('app.e_item_a')</a></small>
-                            <small class="text-muted">|</small>
-                            <small class="text-muted"><a href="{{ route('deleteitem.route', $item->id) }}">@lang('app.e_item_b')</a></small>
-                        </p>
-                        <p class="card-text text-right"><small class="text-muted">{{ $item->created_at }}</small></p>
+                        <div>
+                            <a class="btn btn-sm btn-outline-primary" href="{{ route('edititemform.route', $item->id) }}">@lang('app.e_item_a')</a>
+                            <a class="btn btn-sm btn-outline-danger" href="{{ route('deleteitem.route', $item->id) }}">@lang('app.e_item_b')</a>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <small class="text-muted">{{ $item->created_at }}</small>
+                        </div>
                     </div>
                 </div>
             </div>
