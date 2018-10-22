@@ -63,7 +63,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <a class="btn btn-default" href="{{ route('dashboard') }}">Cancel</a>
+                <a class="btn btn-default" href="{{ route('products.index') }}">Cancel</a>
                 <button type="submit" class="btn btn-info pull-right">Confirm</button>
             </div>
             <!-- /.box-footer -->

@@ -45,15 +45,14 @@ class ProductController extends Controller
             'category_id' => $request['category'],
         ]);
 
-        if($request->hasfile('img'))
-        {
+        if ($request->hasfile('img')) {
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
-            $filename =time().$name;
+            $filename = time() . $name;
             $file->move('storage/items/', $filename);
         }
 
-        return redirect()->route('myitems.route')->with('alert_success','Item was added successfully');
+        return redirect()->route('myitems.route')->with('alert_success', 'Item was added successfully');
 
     }
 
@@ -74,25 +73,24 @@ class ProductController extends Controller
         $item->country = $request->input('country');
         $item->category_id = $request->input('category');
 
-        if($request->hasfile('img'))
-        {
+        if ($request->hasfile('img')) {
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
-            $filename =time().$name;
+            $filename = time() . $name;
             $file->move('storage/items/', $filename);
             $item->img = $filename;
         }
 
         $item->save();
 
-        return redirect()->route('myitems.route')->with('alert_success','Item was updated successfully');
+        return redirect()->route('myitems.route')->with('alert_success', 'Item was updated successfully');
     }
 
     public function deleteItem($id)
     {
         Item::destroy($id);
 
-        return redirect()->route('myitems.route')->with('alert_danger','Item was deleted successfully');
+        return redirect()->route('myitems.route')->with('alert_danger', 'Item was deleted successfully');
     }
 
     public function addComment(Request $request, $id)

@@ -24,7 +24,7 @@
             <!-- /.box-body -->
         </div>
         <div class="box-footer">
-            <a class="btn btn-default" href="{{ route('dashboard') }}">Cancel</a>
+            <a class="btn btn-default" href="{{ route('categories.index') }}">Cancel</a>
             <form action="{{ route('categories.destroy', $cat->id) }}" method="POST"
                   style="display: inline-block" class="pull-right">
                 @csrf
