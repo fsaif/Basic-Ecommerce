@@ -65,6 +65,9 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $cat = Category::find($id);
+        if ($cat == null) {
+            abort(404);
+        }
         return view('dashboard.categories.editCategory')->with('cat', $cat);
     }
 
@@ -94,6 +97,9 @@ class CategoriesController extends Controller
     public function delete($id)
     {
         $cat = Category::find($id);
+        if ($cat == null) {
+            abort(404);
+        }
         return view('dashboard.categories.deleteCategory')->with('cat', $cat);
     }
 

@@ -50,6 +50,9 @@ class HomeController extends Controller
     public function showProduct($id)
     {
         $item = Item::find($id);
+        if($item == null){
+            abort(404);
+        }
         $category = Category::getCategory()->where('id', $item->category_id)->first();
         $comments = Comment::all()->where('item_id', $id);
         return view('product')->with('item', $item)->with('comments', $comments)->with('category', $category->name);

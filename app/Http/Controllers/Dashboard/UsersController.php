@@ -71,6 +71,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        if ($user == null) {
+            abort(404);
+        }
         return view('dashboard.users.userProfile')->with('user', $user);
     }
 
@@ -83,6 +86,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        if ($user == null) {
+            abort(404);
+        }
         return view('dashboard.users.editUser')->with('user', $user);
     }
 
@@ -125,6 +131,9 @@ class UsersController extends Controller
     public function delete($id)
     {
         $user = User::find($id);
+        if ($user == null) {
+            abort(404);
+        }
         return view('dashboard.users.deleteUser')->with('user', $user);
     }
 

@@ -73,6 +73,9 @@ class ProductsController extends Controller
     public function show($id)
     {
         $item = Item::find($id);
+        if ($item == null) {
+            abort(404);
+        }
         return view('dashboard.products.productProfile')->with('item', $item);
     }
 
@@ -85,6 +88,9 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $item = Item::find($id);
+        if ($item == null) {
+            abort(404);
+        }
         $categories = Category::all();
         return view('dashboard.products.editProduct')->with('item', $item)->with('categories', $categories);
     }
@@ -129,6 +135,9 @@ class ProductsController extends Controller
     public function delete($id)
     {
         $item = Item::find($id);
+        if ($item == null) {
+            abort(404);
+        }
         return view('dashboard.products.deleteProduct')->with('item', $item);
     }
 

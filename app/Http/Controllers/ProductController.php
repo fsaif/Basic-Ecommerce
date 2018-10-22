@@ -60,6 +60,9 @@ class ProductController extends Controller
     {
         $categories = Category::getCategory()->get();
         $item = Item::find($id);
+        if($item == null){
+            abort(404);
+        }
         return view('editProduct')->with('item', $item)->with('categories', $categories);
     }
 

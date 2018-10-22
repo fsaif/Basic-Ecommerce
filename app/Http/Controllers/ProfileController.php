@@ -39,18 +39,17 @@ class ProfileController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 
-        if($request->hasfile('img'))
-        {
+        if ($request->hasfile('img')) {
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
-            $filename =time().$name;
+            $filename = time() . $name;
             $file->move('storage/users/', $filename);
             $user->img = $filename;
         }
 
         $user->save();
 
-        return redirect()->route('myprofile.route')->with('alert_success','Profile was updated successfully');
+        return redirect()->route('myprofile.route')->with('alert_success', 'Profile was updated successfully');
     }
 
 }
