@@ -38,6 +38,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $cat = new Category();
+        Category::validator($request->all())->validate();
         $cat->name_en = $request->input('name_en');
         $cat->name_ar = $request->input('name_ar');
         $cat->save();
@@ -77,6 +78,7 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $cat = Category::find($id);
+        Category::validator($request->all())->validate();
         $cat->name_en = $request->input('name_en');
         $cat->name_ar = $request->input('name_ar');
         $cat->save();

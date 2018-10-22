@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Validator;
 
 class Category extends Model
 {
@@ -20,6 +21,14 @@ class Category extends Model
     public static function getCategory()
     {
         return Category::select('name_' . App::getLocale() . ' ' . 'as name', 'id' );
+    }
+
+    public static function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name_en' => 'required|string|max:255',
+            'name_ar' => 'required|string|max:255',
+        ]);
     }
 
 }
