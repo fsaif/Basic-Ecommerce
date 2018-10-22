@@ -16,33 +16,18 @@
                             <div class="form-group">
                                 <label>@lang('app.e_profile_a')</label>
                                 <input type="text"
-                                       class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                       class="form-control"
                                        name="username" value="{{ $user->username }}" required/>
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.e_profile_b')</label>
-                                <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="{{ $user->email }}"
+                                <input type="email" class="form-control" name="email" placeholder="{{ $user->email }}"
                                        required/>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.e_profile_c')</label>
-                                <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"
+                                <input type="password" class="form-control" name="password"
                                        value="{{ $user->password }}" required/>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.e_profile_d')</label>

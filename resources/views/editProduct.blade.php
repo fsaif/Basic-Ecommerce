@@ -15,40 +15,22 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>@lang('app.n_item_a')</label>
-                                <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $item->name }}" required/>
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="text" class="form-control" name="name" value="{{ $item->name }}" required/>
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.n_item_b')</label>
-                                <input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description"
+                                <input type="text" class="form-control" name="description"
                                        value="{{ $item->description }}" required/>
-                                @if ($errors->has('description'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('description') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.n_item_c')</label>
-                                <input type="number" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ $item->price }}" required/>
-                                @if ($errors->has('price'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('price') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="number" class="form-control" name="price" value="{{ $item->price }}"
+                                       required/>
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.n_item_d')</label>
-                                <input type="text" class="form-control{{ $errors->has('country') ? ' is-invalid' : '' }}" name="country" value="{{ $item->country }}" required/>
-                                @if ($errors->has('country'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('country') }}</strong>
-                                    </span>
-                                @endif
+                                <input type="text" class="form-control" name="country" value="{{ $item->country }}"
+                                       required/>
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.n_item_e')</label>
@@ -66,7 +48,7 @@
                         </div>
                         <div class="col-md-4">
                             <img class="img-fluid" src="{{ asset('storage/items/'.$item->img) }}"
-                                 alt="Card image cap" id="output" />
+                                 alt="Card image cap" id="output"/>
                         </div>
                     </div>
                 </div>

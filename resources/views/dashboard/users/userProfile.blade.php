@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="box">
-        <div class="box-header">
+    <div class="box box-primary">
+        <div class="box-header with-border">
             <h3 class="box-title">User Details</h3>
         </div>
         <!-- /.box-header -->

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <div class="box">
-        <div class="box-header">
+    <div class="box box-danger">
+        <div class="box-header with-border">
             <h3 class="box-title">Delete Product Confirmation</h3>
         </div>
         <!-- /.box-header -->
