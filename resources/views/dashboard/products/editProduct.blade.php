@@ -47,11 +47,14 @@
                         </div>
                         <div class="form-group">
                             <label>Image</label>
-                            <input type="file" class="form-control-file" id="upload" name="upload"">
+                            <input type="file" class="form-control-file" id="upload" name="upload"
+                                   onchange="loadFile(event)">
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <img src="{{ asset('storage/items/'.$item->img) }}" class="img-fluid img-thumbnail"/>
+                        <img id="output" src="{{ asset('storage/items/'.$item->img) }}"
+                             class="img-fluid img-thumbnail"
+                             style="max-width: 250px; max-height: 250px; min-height: 250px; min-width: 250px;"/>
                     </div>
                 </div>
             </div>

@@ -13,11 +13,11 @@
                     <div class="box-body">
                         <div class="form-group">
                             <label>English Name</label>
-                            <input class="form-control" name="name_en" placeholder="{{ $cat->name_en }}" type="text" required>
+                            <input class="form-control" name="name_en" value="{{ $cat->name_en }}" type="text" required>
                         </div>
                         <div class="form-group">
                             <label>Arabic Name</label>
-                            <input class="form-control" name="name_ar" placeholder="{{ $cat->name_ar }}" type="text" required>
+                            <input class="form-control" name="name_ar" value="{{ $cat->name_ar }}" type="text" required>
                         </div>
                     </div>
                     <!-- /.box-body -->

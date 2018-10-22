@@ -35,7 +35,7 @@ class UsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,11 +47,10 @@ class UsersController extends Controller
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 
-        if($request->hasfile('img'))
-        {
+        if ($request->hasfile('img')) {
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
-            $filename =time().$name;
+            $filename = time() . $name;
             $file->move('storage/users/', $filename);
             $user->img = $filename;
         }
@@ -59,13 +58,13 @@ class UsersController extends Controller
         $user->save();
         $user->attachRole('user');
 
-        return redirect()->route('users.index')->with('alert_sucesss','User was added successfully');
+        return redirect()->route('users.index')->with('alert_sucesss', 'User was added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,7 +79,7 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -95,8 +94,8 @@ class UsersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,26 +105,27 @@ class UsersController extends Controller
         User::validator($request->all())->validate();
         $user->username = $request->input('username');
         $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
+        if ($request->input('password') != $user->password) {
+            $user->password = Hash::make($request->input('password'));
+        }
 
-        if($request->hasfile('img'))
-        {
+        if ($request->hasfile('img')) {
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
-            $filename =time().$name;
+            $filename = time() . $name;
             $file->move('storage/users/', $filename);
             $user->img = $filename;
         }
 
         $user->save();
 
-        return redirect()->route('users.index')->with('alert_sucesss','User was updated successfully');
+        return redirect()->route('users.index')->with('alert_sucesss', 'User was updated successfully');
     }
 
     /**
      * Show the confirmation resource for delete.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function delete($id)
@@ -141,7 +141,7 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -149,6 +149,6 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('alert_danger','User was deleted successfully');
+        return redirect()->route('users.index')->with('alert_danger', 'User was deleted successfully');
     }
 }

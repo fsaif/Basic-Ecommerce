@@ -15,43 +15,49 @@
                 <table class="table table-striped">
                     <tbody>
                     <tr>
-                        <td>Item Name</td>
+                        <td>
+                            <i class="fa fa-navicon"></i>
+                            Item Name
+                        </td>
                         <td>{{ $item->name }}</td>
                     </tr>
                     <tr>
-                        <td>description</td>
+                        <td>
+                            <i class="fa fa-dashcube"></i>
+                            description
+                        </td>
                         <td>{{ $item->description }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="fa fa-calendar-alt"></i>
+                            <i class="fa fa-calendar"></i>
                             Create Date
                         </td>
                         <td>{{ $item->created_at }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="far fa-money-bill-alt"></i>
+                            <i class="fa fa-money"></i>
                             Price
                         </td>
                         <td>${{ $item->price }}</td>
                     </tr>
                     <tr>
-                        <td><i class="far fa-caret-square-right"></i>
+                        <td><i class="fa fa-caret-right"></i>
                             Country
                         </td>
                         <td>{{ $item->country }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="fas fa-tags"></i>
+                            <i class="fa fa-tags"></i>
                             Category
                         </td>
                         <td>{{ $item->category->name_en }}</td>
                     </tr>
                     <tr>
                         <td>
-                            <i class="far fa-user"></i>
+                            <i class="fa fa-user"></i>
                             Belongs to
                         </td>
                         <td>{{ $item->user->username }}</td>
