@@ -21,5 +21,15 @@ class UserTableSeeder extends Seeder
         ]);
 
         $user->attachRole('super_admin');
+
+        $user = \App\User::create([
+
+            'username' => 'superadmin2',
+            'email' => 'superadmin2@app.com',
+            'password' => Hash::make('admin123'),
+
+        ]);
+
+        $user->attachRole('super_admin');
     }
 }

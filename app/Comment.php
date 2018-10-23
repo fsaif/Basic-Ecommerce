@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class Comment extends Model
 {
     protected $fillable = [
-        'comment', 'user_id', 'item_id',
+        'comment', 'created_by', 'item_id',
     ];
 
     protected  $primaryKey = 'id';
@@ -19,6 +19,18 @@ class Comment extends Model
 
     public function item(){
         return $this->belongsTo('App\Item');
+    }
+
+    public function creater() {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function deleter() {
+        return $this->belongsTo('App\User', 'deleted_by');
+    }
+
+    public function updater() {
+        return $this->belongsTo('App\User', 'updated_by');
     }
 
 }

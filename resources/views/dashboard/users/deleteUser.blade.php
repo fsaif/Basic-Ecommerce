@@ -35,6 +35,35 @@
                         </td>
                         <td>{{ $user->created_at }}</td>
                     </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            created by:
+                        </td>
+                        <td>
+                            @if($user->creater != null)
+                                {{ $user->creater->username }}
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            last update date:
+                        </td>
+                        <td>{{ $user->updated_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            updated by:
+                        </td>
+                        <td>
+                            @if($user->updater != null)
+                                {{ $user->updater->username }}
+                            @endif
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

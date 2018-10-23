@@ -33,13 +33,18 @@ class ProfileController extends Controller
     public function editMyProfile(Request $request)
     {
         $id = Auth::id();
-        User::validator($request->all())->validate();
         $user = User::find($id);
-        $user->username = $request->input('username');
-        $user->email = $request->input('email');
+        //User::validator($request->all())->validate();
+        if ($request->input('username') != $user->username) {
+            $user->username = $request->input('username');
+        }
+        if ($request->input('email') != $user->email) {
+            $user->email = $request->input('email');
+        }
         if ($request->input('password') != $user->password) {
             $user->password = Hash::make($request->input('password'));
         }
+        $user->updated_by = Auth::id();
 
         if ($request->hasfile('img')) {
             $file = $request->file('img');

@@ -20,10 +20,17 @@ class CreateItemsTable extends Migration
             $table->decimal('price');
             $table->string('country');
             $table->string('img')->default('item.jpg');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->integer('owned_by')->unsigned()->nullable();
+            $table->foreign('owned_by')->references('id')->on('users');
+            $table->integer('deleted_by')->unsigned()->nullable();
+            $table->foreign('deleted_by')->references('id')->on('users');
+            $table->integer('updated_by')->unsigned()->nullable();
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

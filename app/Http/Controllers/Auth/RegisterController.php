@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Redirect;
+use Laravel\Socialite\Facades\Socialite;
 
 class RegisterController extends Controller
 {
@@ -43,6 +43,43 @@ class RegisterController extends Controller
         $this->redirectTo = route('home');
     }
 
+    /**
+     * Handle Social login request
+     *
+     * @return response
+     */
+    public function socialLogin($social)
+    {
+        return Socialite::driver($social)->redirect();
+    }
+    /**
+     * Obtain the user information from Social Logged in.
+     * @param $social
+     * @return Response
+     */
+    public function handleProviderCallback($social)
+    {
+        try {
+            $userSocial = Socialite::driver($social)->user();
+            $user = User::where(['email' => $userSocial->getEmail()])->first();
+            if ($user) {
+                Auth::login($user);
+                return redirect()->route('home');
+            } else {
+                $user = new User();
+                $user->username = $userSocial->getName();
+                $user->email = $userSocial->getEmail();
+                $user->password = Hash::make(str_random(8));
+                $user->save();
+                Auth::login($user);
+                return redirect()->route('home');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('signup');
+        }
+    }
+
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -72,7 +109,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'img' => (isset($data['img']) ? $data['img'] : 'user.jpg' ),
+            'img' => (isset($data['img']) ? $data['img'] : 'icon.jpg' ),
         ]);
     }
 }

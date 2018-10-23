@@ -9,7 +9,7 @@
         <!-- /.box-header -->
         <div class="box-body">
             <div class="col-md-3">
-                <img src="{{ asset('storage/users/'.$user->img) }}" class="img-fluid img-thumbnail"/>
+                <img src="{{ isset($user->img) ? asset('storage/users/'. $user->img) : asset('storage/users/user.jpg') }}" class="img-fluid img-thumbnail"/>
             </div>
             <div class="col-md-9">
                 <table class="table table-striped">
@@ -35,6 +35,36 @@
                         </td>
                         <td>{{ $user->created_at }}</td>
                     </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            created by:
+                        </td>
+                        <td>
+                            @if($user->creater != null)
+                                {{ $user->creater->username }}
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            last update date:
+                        </td>
+                        <td>{{ $user->updated_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            updated by:
+                        </td>
+                        <td>
+                            @if($user->updater != null)
+                                {{ $user->updater->username }}
+                            @endif
+                        </td>
+                    </tr>
+
                     </tbody>
                 </table>
             </div>

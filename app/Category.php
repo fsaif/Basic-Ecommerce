@@ -23,6 +23,18 @@ class Category extends Model
         return Category::select('name_' . App::getLocale() . ' ' . 'as name', 'id' );
     }
 
+    public function creater() {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function deleter() {
+        return $this->belongsTo('App\User', 'deleted_by');
+    }
+
+    public function updater() {
+        return $this->belongsTo('App\User', 'updated_by');
+    }
+
     public static function validator(array $data)
     {
         return Validator::make($data, [

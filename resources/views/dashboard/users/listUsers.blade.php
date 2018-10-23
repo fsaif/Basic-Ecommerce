@@ -23,7 +23,7 @@
                             <thead>
                             <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 171.2px;"
+                                    style="width: 25px;"
                                     aria-label="Rendering engine: activate to sort column ascending">#
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -33,6 +33,10 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
                                     email
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
+                                    created by
                                 </th>
                                 <th class="sorting_desc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     style="width: 146.9px;"
@@ -48,11 +52,16 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>
+                                        @if($user->creater != null)
+                                            {{ $user->creater->username }}
+                                        @endif
+                                    </td>
                                     <td class="text-right">
-                                        <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}">Edit</a>
-                                        <a class="btn btn-danger"
+                                        <a class="btn btn-primary btn-sm" href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                        <a class="btn btn-danger btn-sm"
                                            href="{{ route('users.delete', $user->id) }}">Delete</a>
-                                        <a class="btn btn-success"
+                                        <a class="btn btn-success btn-sm"
                                            href="{{ route('users.show', $user->id) }}">Details</a>
                                     </td>
                                 </tr>
@@ -64,6 +73,7 @@
                                 <th rowspan="1" colspan="1">#</th>
                                 <th rowspan="1" colspan="1">username</th>
                                 <th rowspan="1" colspan="1">email</th>
+                                <th rowspan="1" colspan="1">created by</th>
                                 <th rowspan="1" colspan="1">actions</th>
                             </tr>
                             </tfoot>
@@ -71,10 +81,10 @@
                     </div>
                 </div>
 
-                </div>
             </div>
         </div>
-        <!-- /.box-body -->
+    </div>
+    <!-- /.box-body -->
     </div>
 
 @endsection

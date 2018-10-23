@@ -4,7 +4,7 @@
 
     <div class="box box-danger">
         <div class="box-header with-border">
-            <h3 class="box-title">Delete Category Confirmation</h3>
+            <h3 class="box-title">Category Profile</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -60,12 +60,6 @@
         <!-- /.box-body -->
         <div class="box-footer">
             <a class="btn btn-default" href="{{ route('categories.index') }}">Cancel</a>
-            <form action="{{ route('categories.destroy', $cat->id) }}" method="POST"
-                  style="display: inline-block" class="pull-right">
-                @csrf
-                @method('DELETE')
-                <input type="submit" class="btn btn-danger" value="Confirm"/>
-            </form>
         </div>
     </div>
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 class Item extends Model
 {
     protected $fillable = [
-        'name', 'description', 'price', 'country', 'img', 'category_id', 'user_id',
+        'name', 'description', 'price', 'country', 'img', 'category_id', 'created_by',
     ];
 
     protected  $primaryKey = 'id';
@@ -26,6 +26,22 @@ class Item extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+
+    public function creater() {
+        return $this->belongsTo('App\User', 'created_by');
+    }
+
+    public function owner() {
+        return $this->belongsTo('App\User', 'owned_by');
+    }
+
+    public function deleter() {
+        return $this->belongsTo('App\User', 'deleted_by');
+    }
+
+    public function updater() {
+        return $this->belongsTo('App\User', 'updated_by');
     }
 
     public static function validator(array $data)

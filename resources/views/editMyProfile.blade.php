@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label>@lang('app.e_profile_b')</label>
-                                <input type="email" class="form-control" name="email" placeholder="{{ $user->email }}"
+                                <input type="email" class="form-control" name="email" value="{{ $user->email }}"
                                        required/>
                             </div>
                             <div class="form-group">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img class="img-fluid" src="{{ asset("storage/users/$user->img") }}" alt="Card image cap"
+                            <img class="img-fluid" src="{{ asset('storage/users/' . $user->img) }}" alt="Card image cap"
                                  id="output"/>
                         </div>
                     </div>

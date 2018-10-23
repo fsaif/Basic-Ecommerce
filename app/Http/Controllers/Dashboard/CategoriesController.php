@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -41,6 +42,7 @@ class CategoriesController extends Controller
         Category::validator($request->all())->validate();
         $cat->name_en = $request->input('name_en');
         $cat->name_ar = $request->input('name_ar');
+        $cat->created_by = Auth::id();
         $cat->save();
         return redirect()->route('categories.index')->with('alert_sucesss','Category was added successfully');
     }
@@ -53,7 +55,11 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        $cat = Category::find($id);
+        if ($cat == null) {
+            abort(404);
+        }
+        return view('dashboard.categories.categoryProfile')->with('cat', $cat);
     }
 
     /**
@@ -84,6 +90,7 @@ class CategoriesController extends Controller
         Category::validator($request->all())->validate();
         $cat->name_en = $request->input('name_en');
         $cat->name_ar = $request->input('name_ar');
+        $cat->updated_by = Auth::id();
         $cat->save();
         return redirect()->route('categories.index')->with('alert_sucesss','Category was updated successfully');
     }

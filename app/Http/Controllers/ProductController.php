@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function showMyItems()
     {
         $id = Auth::id();
-        $items = Item::where('user_id', $id)->paginate(12);
+        $items = Item::where('created_by', $id)->paginate(12);
         return view('myProducts')->with('items', $items);
     }
 
@@ -41,8 +41,9 @@ class ProductController extends Controller
             'price' => $request['price'],
             'country' => $request['country'],
             'img' => (isset($request['img']) ? $request['img'] : 'item.jpg'),
-            'user_id' => $userID,
+            'created_by' => $userID,
             'category_id' => $request['category'],
+            'owned_by' => $userID,
         ]);
 
         if ($request->hasfile('img')) {
@@ -75,6 +76,7 @@ class ProductController extends Controller
         $item->price = $request->input('price');
         $item->country = $request->input('country');
         $item->category_id = $request->input('category');
+        $item->updated_by = Auth::id();
 
         if ($request->hasfile('img')) {
             $file = $request->file('img');
@@ -102,7 +104,7 @@ class ProductController extends Controller
 
         Comment::create([
             'comment' => $request['comment'],
-            'user_id' => $userID,
+            'created_by' => $userID,
             'item_id' => $id,
         ]);
 

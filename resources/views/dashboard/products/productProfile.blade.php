@@ -37,6 +37,46 @@
                     </tr>
                     <tr>
                         <td>
+                            <i class="fa fa-calendar"></i>
+                            created by:
+                        </td>
+                        <td>
+                            @if($item->creater != null)
+                                {{ $item->creater->username }}
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            product owned by:
+                        </td>
+                        <td>
+                            @if($item->owner != null)
+                                {{ $item->owner->username }}
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            last update date:
+                        </td>
+                        <td>{{ $item->updated_at }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-calendar"></i>
+                            updated by:
+                        </td>
+                        <td>
+                            @if($item->updater != null)
+                                {{ $item->updater->username }}
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <i class="fa fa-money"></i>
                             Price
                         </td>
@@ -55,13 +95,7 @@
                         </td>
                         <td>{{ $item->category->name_en }}</td>
                     </tr>
-                    <tr>
-                        <td>
-                            <i class="fa fa-user"></i>
-                            Belongs to
-                        </td>
-                        <td>{{ $item->user->username }}</td>
-                    </tr>
+
                     </tbody>
                 </table>
             </div>

@@ -23,7 +23,7 @@
                             <thead>
                             <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 171.2px;"
+                                    style="width: 25px;"
                                 >#
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -33,6 +33,10 @@
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     style="width: 185.5px;">
                                     Arabic Name
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    style="width: 185.5px;">
+                                    created by
                                 </th>
                                 <th class="" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     style="width: 146.9px;">
@@ -47,11 +51,18 @@
                                     <td class="">{{ $cat->id }}</td>
                                     <td>{{ $cat->name_en }}</td>
                                     <td>{{ $cat->name_ar }}</td>
+                                    <td>
+                                        @if($cat->creater != null)
+                                            {{ $cat->creater->username }}
+                                        @endif
+                                    </td>
                                     <td class="sorting_1">
-                                        <a class="btn btn-primary"
+                                        <a class="btn btn-primary btn-sm"
                                            href="{{ route('categories.edit', $cat->id) }}">Edit</a>
-                                        <a class="btn btn-danger"
+                                        <a class="btn btn-danger btn-sm"
                                            href="{{ route('categories.delete', $cat->id) }}">Delete</a>
+                                        <a class="btn btn-success btn-sm"
+                                           href="{{ route('categories.show', $cat->id) }}">Details</a>
                                     </td>
                                 </tr>
                             @endforeach

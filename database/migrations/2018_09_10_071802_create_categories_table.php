@@ -17,6 +17,13 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name_en');
             $table->string('name_ar');
+            $table->integer('created_by')->unsigned();
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->integer('deleted_by')->unsigned()->nullable();
+            $table->foreign('deleted_by')->references('id')->on('users');
+            $table->integer('updated_by')->unsigned()->nullable();
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

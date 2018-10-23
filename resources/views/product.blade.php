@@ -51,7 +51,11 @@
                                 <i class="far fa-user"></i>
                                 @lang('app.item_e')
                             </td>
-                            <td>{{ $item->user->username }}</td>
+                            <td>
+                                @if($item->creater != null)
+                                    {{ $item->creater->username }}
+                                @endif
+                            </td>
                         </tr>
                         </tbody>
                     </table>

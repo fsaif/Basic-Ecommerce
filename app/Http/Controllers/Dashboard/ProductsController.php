@@ -49,7 +49,8 @@ class ProductsController extends Controller
         $newItem->price = $request->input('price');
         $newItem->country = $request->input('country');
         $newItem->category_id = $request->input('category');
-        $newItem->user_id = $id;
+        $newItem->created_by = $id;
+        $newItem->owned_by = $id;
 
         if($request->hasfile('upload'))
         {
@@ -111,6 +112,7 @@ class ProductsController extends Controller
         $item->price = $request->input('price');
         $item->country = $request->input('country');
         $item->category_id = $request->input('category');
+        $item->updated_by = Auth::id();
 
         if($request->hasfile('upload'))
         {
