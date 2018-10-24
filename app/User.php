@@ -63,4 +63,33 @@ class User extends Authenticatable
         ]);
     }
 
+    public static function emailValidator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => 'required|string|email|max:255|unique:users',
+        ]);
+    }
+
+    public static function userValidator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|string|max:255|unique:users',
+        ]);
+    }
+
+    public static function passwordValidator(array $data)
+    {
+        return Validator::make($data, [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
+    public static function imgValidator(array $data)
+    {
+        return Validator::make($data , [
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    }
+
+
 }

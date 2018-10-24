@@ -34,19 +34,22 @@ class ProfileController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        //User::validator($request->all())->validate();
         if ($request->input('username') != $user->username) {
-            $user->username = $request->input('username');
+            $username = User::userValidator($request->all())->validate();
+            $user->username = $username['username'];
         }
         if ($request->input('email') != $user->email) {
-            $user->email = $request->input('email');
+            $email = User::emailValidator($request->all())->validate();
+            $user->email = $email['email'];
         }
         if ($request->input('password') != $user->password) {
-            $user->password = Hash::make($request->input('password'));
+            $password = User::passwordValidator($request->all())->validate();
+            $user->password = $password['password'];
         }
-        $user->updated_by = Auth::id();
+        $user->updated_by = $id;
 
         if ($request->hasfile('img')) {
+            User::imgValidator($request->all())->validate();
             $file = $request->file('img');
             $name = $file->getClientOriginalName();
             $filename = time() . $name;

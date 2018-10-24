@@ -19,12 +19,22 @@
                             <input type="text" class="form-control" name="username"
                                    value="{{ $user->username }}"
                                    required/>
+                            @if($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>Password:</label>
                             <input type="password" class="form-control" name="password"
                                    value="{{ $user->password }}"
                                    required/>
+                            @if($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>Confirm Password:</label>
@@ -37,6 +47,11 @@
                             <input type="email" class="form-control" name="email"
                                    value="{{ $user->email }}"
                                    required/>
+                            @if($errors->has('email'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
                         <div class="form-group">
                             <label>Image</label>

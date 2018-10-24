@@ -18,12 +18,22 @@
                                 <input type="text" class="form-control" name="username"
                                            placeholder="text here"
                                            value="{{ old('username') }}" required/>
+                                @if($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Password:</label>
                                 <input type="password" class="form-control" name="password"
                                            placeholder="text here"
                                            required/>
+                                @if($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Confirm Password:</label>
@@ -35,6 +45,11 @@
                                 <label>Email:</label>
                                 <input type="email" class="form-control" name="email" placeholder="email here"
                                            value="{{ old('email') }}" required/>
+                                @if($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                             <div class="form-group">
                                 <label>Image</label>
