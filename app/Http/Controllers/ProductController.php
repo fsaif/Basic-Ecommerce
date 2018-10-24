@@ -93,7 +93,10 @@ class ProductController extends Controller
 
     public function deleteItem($id)
     {
-        Item::destroy($id);
+        $item = Item::find($id);
+        $item->deleted_by = Auth::id();
+        $item->save();
+        $item->delete();
 
         return redirect()->route('myitems.route')->with('alert_danger', 'Item was deleted successfully');
     }

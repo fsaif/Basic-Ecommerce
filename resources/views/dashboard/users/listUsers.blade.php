@@ -63,6 +63,14 @@
                                            href="{{ route('users.delete', $user->id) }}">Delete</a>
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('users.show', $user->id) }}">Details</a>
+                                        <a class="btn btn-block btn-sm"
+                                           href="{{ route('activation', [ 'user', $user->id ]) }}">
+                                            @if($user->status == 0)
+                                                Deactivate
+                                            @elseif($user->status == 1)
+                                                Activate
+                                            @endif
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

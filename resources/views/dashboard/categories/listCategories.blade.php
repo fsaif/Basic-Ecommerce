@@ -63,6 +63,14 @@
                                            href="{{ route('categories.delete', $cat->id) }}">Delete</a>
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('categories.show', $cat->id) }}">Details</a>
+                                        <a class="btn btn-block btn-sm"
+                                           href="{{ route('activation', [ 'category', $cat->id ]) }}">
+                                            @if($cat->status == 0)
+                                                Deactivate
+                                            @elseif($cat->status == 1)
+                                                Activate
+                                            @endif
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

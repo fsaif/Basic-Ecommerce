@@ -156,6 +156,8 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+        $user->deleted_by = Auth::id();
+        $user->save();
         $user->delete();
 
         return redirect()->route('users.index')->with('alert_danger', 'User was deleted successfully');

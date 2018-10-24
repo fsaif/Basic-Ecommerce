@@ -119,6 +119,8 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         $cat = Category::find($id);
+        $cat->deleted_by = Auth::id();
+        $cat->save();
         $cat->delete();
 
         return redirect()->route('categories.index')->with('alert_danger','Category was deleted successfully');

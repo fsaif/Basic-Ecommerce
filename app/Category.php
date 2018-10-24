@@ -25,7 +25,7 @@ class Category extends Model
 
     public static function getCategory()
     {
-        return Category::select('name_' . App::getLocale() . ' ' . 'as name', 'id' );
+        return Category::select('name_' . App::getLocale() . ' ' . 'as name', 'id' )->where('status', '=' , 0);
     }
 
     public function creater() {
@@ -46,6 +46,16 @@ class Category extends Model
             'name_en' => 'required|string|max:255',
             'name_ar' => 'required|string|max:255',
         ]);
+    }
+
+    public static function activate($id)
+    {
+        return ;
+    }
+
+    public static function deactivate()
+    {
+
     }
 
 }

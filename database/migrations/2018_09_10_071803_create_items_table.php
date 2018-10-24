@@ -20,7 +20,7 @@ class CreateItemsTable extends Migration
             $table->decimal('price');
             $table->string('country');
             $table->string('img')->default('item.jpg');
-            $table->enum('status', [0, 1]);
+            $table->char('status')->default(0);
             $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users');
             $table->integer('category_id')->unsigned();

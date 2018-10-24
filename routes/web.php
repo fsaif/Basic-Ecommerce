@@ -76,5 +76,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], funct
     Route::resource('categories', 'Dashboard\CategoriesController');
     Route::get('/products/delete/{id}', 'Dashboard\ProductsController@delete')->name('products.delete');
     Route::resource('products', 'Dashboard\ProductsController');
+    // activate/deactivate button route...
+    Route::get('/activation/{type}/{id}', 'Dashboard\ActivationController@activation')->name('activation');
 
 });

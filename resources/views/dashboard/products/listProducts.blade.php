@@ -63,6 +63,14 @@
                                         <a class="btn btn-danger btn-sm"
                                            href="{{ route('products.delete', $product->id) }}">Delete</a>
                                         <a class="btn btn-success btn-sm" href="{{ route('products.show', $product->id) }}">Details</a>
+                                        <a class="btn btn-block btn-sm"
+                                           href="{{ route('activation', [ 'product', $product->id ]) }}">
+                                            @if($product->status == 0)
+                                                Deactivate
+                                            @elseif($product->status == 1)
+                                                Activate
+                                            @endif
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

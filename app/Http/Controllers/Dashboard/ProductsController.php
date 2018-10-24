@@ -152,6 +152,8 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $item = Item::find($id);
+        $item->deleted_by = Auth::id();
+        $item->save();
         $item->delete();
 
         return redirect()->route('products.index')->with('alert_danger','Product was deleted successfully');

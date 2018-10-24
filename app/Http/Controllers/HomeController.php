@@ -36,7 +36,7 @@ class HomeController extends Controller
             $name = $categories->name;
             $items = Item::where('category_id', $categories->id)->paginate(12);
         } else {
-            $items = Item::paginate(12);
+            $items = Item::where('status', '=', 0)->paginate(12);
             if (App::getLocale() == 'en') {
                 $name = 'Home Page';
             } else if (App::getLocale() == 'ar') {
