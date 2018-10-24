@@ -55,7 +55,7 @@ class HomeController extends Controller
         }
         $category = Category::getCategory()->where('id', $item->category_id)->first();
         $comments = Comment::all()->where('item_id', $id);
-        return view('product')->with('item', $item)->with('comments', $comments)->with('category', $category->name);
+        return view('product')->with('item', $item)->with('comments', $comments)->with('category', ( isset($category->name) ? $category->name : 'not found' ) );
     }
 
 
