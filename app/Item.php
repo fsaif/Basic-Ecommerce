@@ -4,14 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'name', 'description', 'price', 'country', 'img', 'category_id', 'created_by',
+        'name', 'description', 'price', 'country', 'img', 'category_id', 'updated_by' , 'deleted_by', 'created_by', 'status',
     ];
 
     protected  $primaryKey = 'id';
+
+    protected $dates = ['deleted_at', 'created_at', 'updated_at',];
 
     public function user()
     {

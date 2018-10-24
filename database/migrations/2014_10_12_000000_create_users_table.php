@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('img')->default('icon.jpg');
+            $table->enum('status', [0, 1]);
             $table->rememberToken();
             $table->integer('created_by')->unsigned()->nullable();
             $table->foreign('created_by')->references('id')->on('users');
@@ -27,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->foreign('deleted_by')->references('id')->on('users');
             $table->integer('updated_by')->unsigned()->nullable();
             $table->foreign('updated_by')->references('id')->on('users');
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

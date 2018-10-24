@@ -7,11 +7,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Validator;
 use Laratrust\Traits\LaratrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use LaratrustUserTrait;
     use Notifiable;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -19,10 +21,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'img',
+        'username', 'email', 'password', 'img', 'updated_by' , 'deleted_by', 'created_by', 'status',
     ];
 
     protected $primaryKey = 'id';
+
+    protected $dates = ['deleted_at', 'created_at', 'updated_at', 'email_verified_at',];
 
     /**
      * The attributes that should be hidden for arrays.

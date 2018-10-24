@@ -5,14 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'name_en', 'name_ar',
+        'name_en', 'name_ar', 'updated_by' , 'deleted_by', 'created_by', 'status',
     ];
 
     protected $primaryKey = 'id';
+
+    protected $dates = ['deleted_at', 'created_at', 'updated_at',];
 
     public function items(){
         return $this->hasMany('App\Item');

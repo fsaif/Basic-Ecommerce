@@ -4,12 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Comment extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
-        'comment', 'created_by', 'item_id',
+        'comment', 'created_by', 'item_id', 'updated_by' , 'deleted_by',
     ];
+
+    protected $dates = ['deleted_at', 'created_at', 'updated_at',];
 
     protected  $primaryKey = 'id';
 

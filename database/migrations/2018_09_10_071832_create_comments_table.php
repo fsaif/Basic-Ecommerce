@@ -24,7 +24,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('deleted_by')->references('id')->on('users');
             $table->integer('updated_by')->unsigned()->nullable();
             $table->foreign('updated_by')->references('id')->on('users');
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
