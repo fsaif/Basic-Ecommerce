@@ -60,9 +60,9 @@ Route::post('/account/profile/edit', 'ProfileController@editMyProfile')->name('e
 Route::post('/shop/product/comment/{id}', 'ProductController@addComment')->name('addcomment.route');
 
 // social login routes...
-Route::get('/auth/signin/{social}','Auth\LoginController@socialLogin')->where('social','twitter|facebook|google')->name('socialLogin');
+Route::get('/auth/signin/{social}', 'Auth\LoginController@socialLogin')->where('social', 'twitter|facebook|google')->name('socialLogin');
 
-Route::get('/auth/signin/{social}/callback','Auth\LoginController@handleProviderCallback')->where('social','twitter|facebook|google');
+Route::get('/auth/signin/{social}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|facebook|google');
 
 // Dashboard routes...
 Route::get('/admin/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');
@@ -77,6 +77,9 @@ Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], funct
     Route::get('/products/delete/{id}', 'Dashboard\ProductsController@delete')->name('products.delete');
     Route::resource('products', 'Dashboard\ProductsController');
     // activate/deactivate button route...
-    Route::get('/activation/{type}/{id}', 'Dashboard\ActivationController@activation')->name('activation');
+    Route::get('/activation/{type}/{id}', 'Dashboard\UtilController@activation')->name('activation');
+    // move priorities button routes..
+    Route::get('/up/{type}/{id}', 'Dashboard\UtilController@MoveUp')->name('priorities.up');
+    Route::get('/down/{type}/{id}', 'Dashboard\UtilController@MoveDown')->name('priorities.down');
 
 });

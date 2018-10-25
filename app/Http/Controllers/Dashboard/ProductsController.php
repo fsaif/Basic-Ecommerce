@@ -49,6 +49,7 @@ class ProductsController extends Controller
         $newItem->price = $request->input('price');
         $newItem->country = $request->input('country');
         $newItem->category_id = $request->input('category');
+        $newItem->priority = ( Item::GetMaxPriority() + 1 );
         $newItem->created_by = $id;
         $newItem->owned_by = $id;
 

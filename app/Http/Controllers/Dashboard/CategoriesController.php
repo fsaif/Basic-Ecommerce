@@ -42,6 +42,7 @@ class CategoriesController extends Controller
         Category::validator($request->all())->validate();
         $cat->name_en = $request->input('name_en');
         $cat->name_ar = $request->input('name_ar');
+        $cat->priority = ( Category::GetMaxPriority() + 1 );
         $cat->created_by = Auth::id();
         $cat->save();
         return redirect()->route('categories.index')->with('alert_sucesss','Category was added successfully');

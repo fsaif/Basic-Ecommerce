@@ -24,25 +24,25 @@
                             <thead>
                             <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 25px;"
-                                    aria-label="Rendering engine: activate to sort column ascending">#
+                                    aria-label="Rendering engine: activate to sort column ascending">
+                                    priority
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 218.4px;" aria-label="Browser: activate to sort column ascending">
+                                    aria-label="Browser: activate to sort column ascending">
                                     name
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
+                                    aria-label="Platform(s): activate to sort column ascending">
                                     category
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
+                                    aria-label="Platform(s): activate to sort column ascending">
                                     created by
                                 </th>
                                 <th class="sorting_desc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 146.9px;"
                                     aria-label="Engine version: activate to sort column ascending"
-                                    aria-sort="descending">actions
+                                    aria-sort="descending">
+                                    actions
                                 </th>
                             </tr>
                             </thead>
@@ -50,7 +50,7 @@
 
                             @foreach($products as $product)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->priority }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->category->name_en }}</td>
                                     <td>
@@ -58,12 +58,18 @@
                                             {{ $product->creater->username }}
                                         @endif
                                     </td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->id) }}">Edit</a>
+                                    <td class="text-right">
+                                        <a href="{{ route('priorities.up', ['product', $product->id] ) }}"><i
+                                                    class="fa fa-arrow-up"></i></a>
+                                        <a href="{{ route('priorities.down', ['product', $product->id]) }}"><i
+                                                    class="fa fa-arrow-down"></i></a>
+                                        <a class="btn btn-primary btn-sm"
+                                           href="{{ route('products.edit', $product->id) }}">Edit</a>
                                         <a class="btn btn-danger btn-sm"
                                            href="{{ route('products.delete', $product->id) }}">Delete</a>
-                                        <a class="btn btn-success btn-sm" href="{{ route('products.show', $product->id) }}">Details</a>
-                                        <a class="btn btn-block btn-sm"
+                                        <a class="btn btn-success btn-sm"
+                                           href="{{ route('products.show', $product->id) }}">Details</a>
+                                        <a class="btn btn-default btn-sm"
                                            href="{{ route('activation', [ 'product', $product->id ]) }}">
                                             @if($product->status == 0)
                                                 Deactivate
@@ -82,6 +88,7 @@
                                 <th rowspan="1" colspan="1">name</th>
                                 <th rowspan="1" colspan="1">category</th>
                                 <th rowspan="1" colspan="1">created by</th>
+                                <th rowspan="1" colspan="1">priority</th>
                                 <th rowspan="1" colspan="1">actions</th>
                             </tr>
                             </tfoot>
@@ -89,10 +96,10 @@
                     </div>
                 </div>
 
-                </div>
             </div>
         </div>
-        <!-- /.box-body -->
+    </div>
+    <!-- /.box-body -->
     </div>
 
 @endsection

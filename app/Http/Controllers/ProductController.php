@@ -33,6 +33,7 @@ class ProductController extends Controller
     public function createItem(Request $request)
     {
         $userID = Auth::id();
+        $priority = Item::GetMaxPriority() + 1;
         Item::validator($request->all())->validate();
 
         Item::create([
@@ -44,6 +45,7 @@ class ProductController extends Controller
             'created_by' => $userID,
             'category_id' => $request['category'],
             'owned_by' => $userID,
+            'priority' => $priority,
         ]);
 
         if ($request->hasfile('img')) {

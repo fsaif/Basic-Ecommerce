@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name_en');
             $table->string('name_ar');
+            $table->integer('priority')->unsigned();
             $table->char('status')->default(0);
             $table->integer('created_by')->unsigned();
             $table->foreign('created_by')->references('id')->on('users');

@@ -7,13 +7,13 @@ use App\Item;
 use App\User;
 use App\Http\Controllers\Controller;
 
-class ActivationController extends Controller
+class UtilController extends Controller
 {
 
 
     public function activation($type, $id)
     {
-        switch ($type){
+        switch ($type) {
 
             case 'user':
                 $user = User::find($id);
@@ -53,5 +53,36 @@ class ActivationController extends Controller
 
     }
 
+    public function MoveUp($type, $id)
+    {
+        switch ($type) {
+            case 'category':
+                Category::MoveUp($id);
+                return back();
+                break;
+            case 'product':
+                Item::MoveUp($id);
+                return back();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public function MoveDown($type, $id)
+    {
+        switch ($type) {
+            case 'category':
+                Category::MoveDown($id);
+                return back();
+                break;
+            case 'product':
+                Item::MoveDown($id);
+                return back();
+                break;
+            default:
+                break;
+        }
+    }
 
 }

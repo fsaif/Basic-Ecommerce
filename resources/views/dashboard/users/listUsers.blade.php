@@ -23,25 +23,25 @@
                             <thead>
                             <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 25px;"
-                                    aria-label="Rendering engine: activate to sort column ascending">#
+                                    aria-label="Rendering engine: activate to sort column ascending">
+                                    #
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 218.4px;" aria-label="Browser: activate to sort column ascending">
+                                    aria-label="Browser: activate to sort column ascending">
                                     username
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
+                                    aria-label="Platform(s): activate to sort column ascending">
                                     email
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;" aria-label="Platform(s): activate to sort column ascending">
+                                    aria-label="Platform(s): activate to sort column ascending">
                                     created by
                                 </th>
                                 <th class="sorting_desc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 146.9px;"
                                     aria-label="Engine version: activate to sort column ascending"
-                                    aria-sort="descending">actions
+                                    aria-sort="descending">
+                                    actions
                                 </th>
                             </tr>
                             </thead>
@@ -63,7 +63,7 @@
                                            href="{{ route('users.delete', $user->id) }}">Delete</a>
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('users.show', $user->id) }}">Details</a>
-                                        <a class="btn btn-block btn-sm"
+                                        <a class="btn btn-default btn-sm"
                                            href="{{ route('activation', [ 'user', $user->id ]) }}">
                                             @if($user->status == 0)
                                                 Deactivate

@@ -22,24 +22,19 @@
                                aria-describedby="example1_info">
                             <thead>
                             <tr role="row">
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 25px;"
-                                >#
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
+                                    #priority
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 218.4px;">
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
                                     English Name
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;">
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
                                     Arabic Name
                                 </th>
-                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 185.5px;">
+                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
                                     created by
                                 </th>
-                                <th class="" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    style="width: 146.9px;">
+                                <th class="" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">
                                     Actions
                                 </th>
                             </tr>
@@ -48,7 +43,7 @@
 
                             @foreach($categories as $cat)
                                 <tr role="row" class="odd">
-                                    <td class="">{{ $cat->id }}</td>
+                                    <td>{{ $cat->priority }}</td>
                                     <td>{{ $cat->name_en }}</td>
                                     <td>{{ $cat->name_ar }}</td>
                                     <td>
@@ -56,14 +51,18 @@
                                             {{ $cat->creater->username }}
                                         @endif
                                     </td>
-                                    <td class="sorting_1">
+                                    <td class="text-right">
+                                        <a href="{{ route('priorities.up', ['category', $cat->id] ) }}"><i
+                                                    class="fa fa-arrow-up"></i></a>
+                                        <a href="{{ route('priorities.down', ['category', $cat->id]) }}"><i
+                                                    class="fa fa-arrow-down"></i></a>
                                         <a class="btn btn-primary btn-sm"
                                            href="{{ route('categories.edit', $cat->id) }}">Edit</a>
                                         <a class="btn btn-danger btn-sm"
                                            href="{{ route('categories.delete', $cat->id) }}">Delete</a>
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('categories.show', $cat->id) }}">Details</a>
-                                        <a class="btn btn-block btn-sm"
+                                        <a class="btn btn-default btn-sm"
                                            href="{{ route('activation', [ 'category', $cat->id ]) }}">
                                             @if($cat->status == 0)
                                                 Deactivate
