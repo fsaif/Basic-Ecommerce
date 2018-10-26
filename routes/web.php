@@ -64,22 +64,31 @@ Route::get('/auth/signin/{social}', 'Auth\LoginController@socialLogin')->where('
 
 Route::get('/auth/signin/{social}/callback', 'Auth\LoginController@handleProviderCallback')->where('social', 'twitter|facebook|google');
 
-// Dashboard routes...
-Route::get('/admin/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');
-
 // Administrator Control Panel Routes...
 Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], function () {
 
-    Route::get('/users/delete/{id}', 'Dashboard\UsersController@delete')->name('users.delete');
+    // Dashboard route...
+    Route::get('/dashboard', 'Dashboard\DashboardController@showDashboard')->name('dashboard');
+
+    // Users
     Route::resource('users', 'Dashboard\UsersController');
-    Route::get('/categories/delete/{id}', 'Dashboard\CategoriesController@delete')->name('categories.delete');
+    Route::get('/users/up/{id}', 'Dashboard\UsersController@MoveUp')->name('users.up');
+    Route::get('/users/down/{id}', 'Dashboard\UsersController@MoveDown')->name('users.down');
+    Route::get('/users/delete/{id}', 'Dashboard\UsersController@delete')->name('users.delete');
+    Route::get('/users/activation/{id}', 'Dashboard\UsersController@activation')->name('users.activation');
+    // Categories
     Route::resource('categories', 'Dashboard\CategoriesController');
-    Route::get('/products/delete/{id}', 'Dashboard\ProductsController@delete')->name('products.delete');
+    Route::get('/categories/delete/{id}', 'Dashboard\CategoriesController@delete')->name('categories.delete');
+    Route::get('/categories/up/{id}', 'Dashboard\CategoriesController@MoveUp')->name('categories.up');
+    Route::get('/categories/down/{id}', 'Dashboard\CategoriesController@MoveDown')->name('categories.down');
+    Route::get('/categories/activation/{id}', 'Dashboard\CategoriesController@activation')->name('categories.activation');
+
+    // Products
     Route::resource('products', 'Dashboard\ProductsController');
-    // activate/deactivate button route...
-    Route::get('/activation/{type}/{id}', 'Dashboard\UtilController@activation')->name('activation');
-    // move priorities button routes..
-    Route::get('/up/{type}/{id}', 'Dashboard\UtilController@MoveUp')->name('priorities.up');
-    Route::get('/down/{type}/{id}', 'Dashboard\UtilController@MoveDown')->name('priorities.down');
+    Route::get('/products/delete/{id}', 'Dashboard\ProductsController@delete')->name('products.delete');
+    Route::get('/products/up/{id}', 'Dashboard\ProductsController@MoveUp')->name('products.up');
+    Route::get('/products/down/{id}', 'Dashboard\ProductsController@MoveDown')->name('products.down');
+    Route::get('/products/activation/{id}', 'Dashboard\ProductsController@activation')->name('products.activation');
+
 
 });

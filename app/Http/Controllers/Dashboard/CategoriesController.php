@@ -126,4 +126,38 @@ class CategoriesController extends Controller
 
         return redirect()->route('categories.index')->with('alert_danger','Category was deleted successfully');
     }
+
+    /*
+     * Activate and Deactivate status for category
+     */
+    public function activation($id)
+    {
+        $cat = Category::find($id);
+        if ($cat->status == 0) {
+            $cat->status = 1;  // deactivate
+        } elseif ($cat->status == 1) {
+            $cat->status = 0;  // activate
+        }
+        $cat->save();
+        return back();
+    }
+
+    /*
+     *  Move up priority
+     */
+    public function MoveUp($id)
+    {
+        Category::MoveUp($id);
+        return back();
+    }
+
+    /*
+     *  Move down priority
+     */
+    public function MoveDown($id)
+    {
+        Category::MoveDown($id);
+        return back();
+    }
+
 }

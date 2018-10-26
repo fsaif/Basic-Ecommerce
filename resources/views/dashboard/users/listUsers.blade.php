@@ -64,7 +64,7 @@
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('users.show', $user->id) }}">Details</a>
                                         <a class="btn btn-default btn-sm"
-                                           href="{{ route('activation', [ 'user', $user->id ]) }}">
+                                           href="{{ route('users.activation', $user->id ) }}">
                                             @if($user->status == 0)
                                                 Deactivate
                                             @elseif($user->status == 1)

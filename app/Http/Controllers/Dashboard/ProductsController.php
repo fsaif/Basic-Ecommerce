@@ -159,4 +159,39 @@ class ProductsController extends Controller
 
         return redirect()->route('products.index')->with('alert_danger','Product was deleted successfully');
     }
+
+    /*
+     * Activate and Deactivate status for products
+     */
+    public function activation($id)
+    {
+        $item = Item::find($id);
+        if ($item->status == 0) {
+            $item->status = 1;  // deactivate
+        } elseif ($item->status == 1) {
+            $item->status = 0;  // activate
+        }
+        $item->save();
+        return back();
+    }
+
+    /*
+     *  Move up priority
+     */
+    public function MoveUp($id)
+    {
+
+        Item::MoveUp($id);
+        return back();
+    }
+
+    /*
+     *  Move down priority
+     */
+    public function MoveDown($id)
+    {
+        Item::MoveDown($id);
+        return back();
+    }
+
 }

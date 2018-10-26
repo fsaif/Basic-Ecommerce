@@ -52,9 +52,9 @@
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('priorities.up', ['category', $cat->id] ) }}"><i
+                                        <a href="{{ route('categories.up', $cat->id ) }}"><i
                                                     class="fa fa-arrow-up"></i></a>
-                                        <a href="{{ route('priorities.down', ['category', $cat->id]) }}"><i
+                                        <a href="{{ route('categories.down', $cat->id) }}"><i
                                                     class="fa fa-arrow-down"></i></a>
                                         <a class="btn btn-primary btn-sm"
                                            href="{{ route('categories.edit', $cat->id) }}">Edit</a>
@@ -63,7 +63,7 @@
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('categories.show', $cat->id) }}">Details</a>
                                         <a class="btn btn-default btn-sm"
-                                           href="{{ route('activation', [ 'category', $cat->id ]) }}">
+                                           href="{{ route('categories.activation', $cat->id ) }}">
                                             @if($cat->status == 0)
                                                 Deactivate
                                             @elseif($cat->status == 1)
@@ -74,6 +74,15 @@
                                 </tr>
                             @endforeach
                             </tbody>
+                            <tfoot>
+                            <tr>
+                                <th rowspan="1" colspan="1">#priority</th>
+                                <th rowspan="1" colspan="1">English Name</th>
+                                <th rowspan="1" colspan="1">Arabic Name</th>
+                                <th rowspan="1" colspan="1">created by</th>
+                                <th rowspan="1" colspan="1">Actions</th>
+                            </tr>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

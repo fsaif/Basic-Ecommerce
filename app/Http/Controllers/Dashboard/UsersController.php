@@ -162,4 +162,20 @@ class UsersController extends Controller
 
         return redirect()->route('users.index')->with('alert_danger', 'User was deleted successfully');
     }
+
+    /*
+     * Activate and Deactivate status for user
+     */
+    public function activation($id)
+    {
+        $user = User::find($id);
+        if ($user->status == 0) {
+            $user->status = 1;  // deactivate
+        } elseif ($user->status == 1) {
+            $user->status = 0;  // activate
+        }
+        $user->save();
+        return back();
+    }
+
 }

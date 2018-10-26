@@ -25,7 +25,7 @@
                             <tr role="row">
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Rendering engine: activate to sort column ascending">
-                                    priority
+                                    #priority
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Browser: activate to sort column ascending">
@@ -59,9 +59,9 @@
                                         @endif
                                     </td>
                                     <td class="text-right">
-                                        <a href="{{ route('priorities.up', ['product', $product->id] ) }}"><i
+                                        <a href="{{ route('products.up', $product->id ) }}"><i
                                                     class="fa fa-arrow-up"></i></a>
-                                        <a href="{{ route('priorities.down', ['product', $product->id]) }}"><i
+                                        <a href="{{ route('products.down', $product->id ) }}"><i
                                                     class="fa fa-arrow-down"></i></a>
                                         <a class="btn btn-primary btn-sm"
                                            href="{{ route('products.edit', $product->id) }}">Edit</a>
@@ -70,7 +70,7 @@
                                         <a class="btn btn-success btn-sm"
                                            href="{{ route('products.show', $product->id) }}">Details</a>
                                         <a class="btn btn-default btn-sm"
-                                           href="{{ route('activation', [ 'product', $product->id ]) }}">
+                                           href="{{ route('products.activation', $product->id ) }}">
                                             @if($product->status == 0)
                                                 Deactivate
                                             @elseif($product->status == 1)
@@ -84,11 +84,10 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">#</th>
+                                <th rowspan="1" colspan="1">#priority</th>
                                 <th rowspan="1" colspan="1">name</th>
                                 <th rowspan="1" colspan="1">category</th>
                                 <th rowspan="1" colspan="1">created by</th>
-                                <th rowspan="1" colspan="1">priority</th>
                                 <th rowspan="1" colspan="1">actions</th>
                             </tr>
                             </tfoot>
