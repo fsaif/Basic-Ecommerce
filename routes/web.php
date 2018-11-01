@@ -30,6 +30,13 @@ Route::post('/auth/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/auth/signup', 'Auth\RegisterController@showRegistrationForm')->name('signup');
 Route::post('/auth/signup', 'Auth\RegisterController@register')->name('register');
 
+// Password Reset Routes...
+Route::get('/auth/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('/auth/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('/auth/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('/auth/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
+
 // Categories Routes...
 Route::get('/shop/category/{id}', 'HomeController@index')->name('catgory.route');
 

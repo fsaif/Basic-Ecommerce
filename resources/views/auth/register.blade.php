@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 control-label">@lang('app.register_with')</label>
+                    <label for="name" class="col-md-6 control-label">@lang('app.register_with')</label>
                     <div class="col-md-6">
                             <a href="{{ route('socialLogin','facebook') }}" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook fa-2x"></i></a>
 

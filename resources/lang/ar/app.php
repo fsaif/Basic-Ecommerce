@@ -57,5 +57,7 @@ return [
     'comment_by' => 'الكاتب',
     'comment_at' => 'التاريخ',
 
+    'forget-password' => 'هل نسيت كلمة السر؟',
+
 ];
 ?>

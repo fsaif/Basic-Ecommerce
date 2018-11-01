@@ -56,6 +56,8 @@ return [
 
     'comment_by' => 'by',
     'comment_at' => 'at',
+
+    'forget-password' => 'Forgot your password?',
     
 ];
 ?>

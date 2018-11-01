@@ -43,7 +43,6 @@
                         </li>
                 @endif
             @endforeach
-
             <!-- Authentication Links -->
                 <li class="nav-item">
                     <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
