@@ -30,20 +30,34 @@
 <body>
 <div id="app">
     <div class="container">
-
         @guest
             <ul class="nav justify-content-end">
                 <li class="nav-item">
                 @foreach (config('translatable.locales') as $lang => $language)
                     @if($lang != app()->getLocale())
-                        <li>
                             <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                 {{ $language }}
                             </a>
-                        </li>
-                @endif
-            @endforeach
-            <!-- Authentication Links -->
+                    @endif
+                @endforeach
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        {{$dd}}
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach ($currencies as $currency)
+                            <li>
+                                <a href="{{ route('changeCurrency', $currency->currencyID) }}" class="nav-link">
+                                    {{ $currency->shortcut }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+
+                <!-- Authentication Links -->
                 <li class="nav-item">
                     <a class="nav-link px-0" href="{{ route('signin') }}">@lang('app.link_a')</a>
                 </li>

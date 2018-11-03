@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Currency;
 use App\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,12 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.app', function ($view) {
             $categories = Category::getCategory()->get();
-            $view->with('categories', $categories);
+            $currencies = Currency::all();
+            $currencyID = Session::get('currency');
+            $dd = Currency::find($currencyID)->shortcut;
+            $view->with('categories', $categories)
+                ->with('currencies', $currencies)
+                ->with('dd',$dd);
         });
     }
 

@@ -99,3 +99,6 @@ Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], funct
 
 
 });
+
+
+Route::get('/currency/change/{currencyID}','CurrencyController@changeCurrency')->name('changeCurrency');
