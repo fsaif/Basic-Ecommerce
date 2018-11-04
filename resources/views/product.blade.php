@@ -57,8 +57,16 @@
                                 @endif
                             </td>
                         </tr>
+
                         </tbody>
                     </table>
+                    <form method="post" action="{{ route('addToCart.route', $item->id) }}">
+                        @csrf
+                        <input type="number" name="quantity" min="1" value="1"/>
+
+                        <input type="submit" value="add to cart" class="btn btn-sm btn-secondary"/>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -66,16 +74,16 @@
         <hr/>
 
         @auth
-        <div class="p-1 mb-5">
-            <form class="needs-validation" method="post" action="{{ route('addcomment.route', $item->id) }}">
-                @csrf
-                <div class="form-group">
-                    <label>@lang('app.item_f')</label>
-                    <textarea class="form-control" name="comment" rows="2" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-secondary">@lang('app.item_g')</button>
-            </form>
-        </div>
+            <div class="p-1 mb-5">
+                <form class="needs-validation" method="post" action="{{ route('addcomment.route', $item->id) }}">
+                    @csrf
+                    <div class="form-group">
+                        <label>@lang('app.item_f')</label>
+                        <textarea class="form-control" name="comment" rows="2" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-secondary">@lang('app.item_g')</button>
+                </form>
+            </div>
         @endauth
 
 

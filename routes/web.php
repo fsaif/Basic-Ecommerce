@@ -100,5 +100,10 @@ Route::group(['prefix' => '/admin', 'middleware' => ['role:super_admin']], funct
 
 });
 
-
+// multi currenct routes...
 Route::get('/currency/change/{currencyID}','CurrencyController@changeCurrency')->name('changeCurrency');
+
+// shopping cart routes...
+Route::get('/shop/cart', 'CartController@getCart')->name('mycart.route');
+Route::post('/shop/cart/add/{id}', 'CartController@addToCart')->name('addToCart.route');
+Route::get('/shop/cart/remove/{id}', 'CartController@RemoveFromCart')->name('removeFromCart.route');

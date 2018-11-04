@@ -97,6 +97,8 @@
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
 
                         <a class="dropdown-item"
+                           href="{{ route('mycart.route') }}">my cart</a>
+                        <a class="dropdown-item"
                            href="{{ route('myprofile.route') }}">@lang('app.dropdown_a')</a>
                         <a class="dropdown-item"
                            href="{{ route('additemform.route') }}">@lang('app.dropdown_b')</a>
