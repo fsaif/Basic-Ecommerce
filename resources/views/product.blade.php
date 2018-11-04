@@ -30,7 +30,13 @@
                                 <i class="far fa-money-bill-alt"></i>
                                 @lang('app.item_b')
                             </td>
-                            <td>${{ $item->price }}</td>
+                            <td>
+                                @if(\Illuminate\Support\Facades\Session::get('currency') == 1)
+                                    ${{ $item->price }}
+                                @else
+                                    jd{{ \App\Currency::convert($item->price) }}
+                                @endif
+                            </td>
                         </tr>
                         <tr>
                             <td>

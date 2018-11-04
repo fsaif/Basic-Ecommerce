@@ -14,24 +14,24 @@ class CartController extends Controller
 
     public function getCart()
     {
-        if(Session::get('cart') != null)
-        {
+        if(Session::get('cart') != null) {
+
             $cartitems = Session::get('cart');
             $cartitems = array_values($cartitems);
             $items = Item::whereIn('id', $cartitems)->get();
             $itemsCount = count($items);
 
-            for($i = 0; $i < count($items); $i++)
-            {
+            for($i = 0; $i < count($items); $i++) {
                 $items[$i]['quantity'] = Cart::GetProductQty($items[$i]->id);
             }
 
             $total = 0;
-            foreach($items as $item)
-            {
+
+            foreach($items as $item) {
                 $total += $item->price * Cart::GetProductQty($item->id);
             }
-        }else {
+
+        } else {
             $items = 0;
             $total = 0;
             $itemsCount = 0;
@@ -47,27 +47,22 @@ class CartController extends Controller
         if (Session::get('cart') != null) {
 
             $arraysearch = in_array(Cart::GetProductIDs($product), Cart::GetProductID(Session::get('cart')));
-            if ($arraysearch == true)
-            {
+
+            if ($arraysearch == true) {
 
                 $oldquantity = Cart::GetProductQty($product);
 
                 $this->RemoveFromCart($product . ':' . $oldquantity);
 
-
-
                 Session::push('cart', $product . ":" . ($oldquantity + $quantity));
 
-            }
-            else
-            {
+            } else {
                 Session::push('cart', $product . ":" . $quantity);
-
             }
-        }else{
+
+        } else {
             Session::push('cart', $product . ":" . $quantity);
         }
-
 
         return Redirect::route('mycart.route');
     }

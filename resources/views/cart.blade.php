@@ -36,8 +36,20 @@
                         </td>
                         <td>
                             <div class="price-wrap">
-                                <var class="price">{{ $item->price }}</var>
-                                <small class="text-muted">{{ $total }}</small>
+                                <var class="price">
+                                    @if(\Illuminate\Support\Facades\Session::get('currency') == 1)
+                                        ${{ $item->price }}
+                                    @else
+                                        jd{{ \App\Currency::convert($item->price) }}
+                                    @endif
+                                </var>
+                                <small class="text-muted">
+                                    @if(\Illuminate\Support\Facades\Session::get('currency') == 1)
+                                        ${{ $total }}
+                                    @else
+                                        jd{{ \App\Currency::convert($total) }}
+                                    @endif
+                                </small>
                             </div> <!-- price-wrap .// -->
                         </td>
                         <td class="text-right">

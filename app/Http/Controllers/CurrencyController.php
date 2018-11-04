@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Session;
 
 class CurrencyController extends Controller
 {
-    public function changeCurrency($currenyID)
+    public function changeCurrency($currencyID)
     {
-        Session::put('currency', $currenyID);
+        Session::put('currency', $currencyID);
         return Redirect::back();
     }
 }

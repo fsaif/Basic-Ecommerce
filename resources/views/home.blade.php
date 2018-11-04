@@ -9,7 +9,13 @@
                     <div class="card">
                         <img class="card-img-top" style="max-height: 250px;"
                              src="{{ asset('storage/items/'.$item->img) }}" alt="Card image cap">
-                        <span class="price-label">${{ $item->price }}</span>
+                        <span class="price-label">
+                            @if(\Illuminate\Support\Facades\Session::get('currency') == 1)
+                                ${{ $item->price }}
+                            @else
+                                jd{{ \App\Currency::convert($item->price) }}
+                            @endif
+                        </span>
                         <div class="card-body">
                             <h4 class="card-title"><a
                                         href="{{ route('product.route', $item->id) }}">{{ $item->name }}</a></h4>

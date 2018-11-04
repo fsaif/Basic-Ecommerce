@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('lang/{language}', 'LanguageController@switchLang')->name('lang.switch');
+Route::get('/lang/{language}', 'LanguageController@switchLang')->name('lang.switch');
 
 // Home Routes...
 Route::get('/shop', 'HomeController@index')->name('homelink');
