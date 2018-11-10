@@ -44,11 +44,6 @@
                                             @endif
                                         </var>
                                         <small class="text-muted">
-                                            {{--@if(\Illuminate\Support\Facades\Session::get('currency') == 1)--}}
-                                            {{--${{ $total }}--}}
-                                            {{--@else--}}
-                                            {{--jd{{ \App\Currency::convert($total) }}--}}
-                                            {{--@endif--}}
                                             per item
                                         </small>
                                     </div> <!-- price-wrap .// -->
@@ -58,10 +53,10 @@
                                           method="post">
                                         @csrf
                                         <div class="form-group">
-                                            <span class="btn btn-sm btn-outline-danger mr-1" onclick="{increasePrice()}"><i class="fa fa-plus fa-fw"></i></span>
+                                            <span class="btn btn-sm btn-outline-danger mr-1 quantity-plus" ><i class="fa fa-plus fa-fw"></i></span>
                                             <input type="text"  class="form-control-sm" id="quantity" value="{{ $item->quantity }}" disabled />
                                             <input type="hidden" name="quantity" id="hiddenQuantity" value="1">
-                                            <span class="btn btn-sm btn-outline-danger ml-1" onclick="{decreasePrice()}"><i class="fa fa-minus fa-fw"></i></span>
+                                            <span class="btn btn-sm btn-outline-danger ml-1 quantity-minus"><i class="fa fa-minus fa-fw"></i></span>
                                         </div>
                                     </form>
 
