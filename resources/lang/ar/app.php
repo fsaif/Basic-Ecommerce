@@ -6,6 +6,8 @@ return [
     'dropdown_b' => 'عنصر جديد',
     'dropdown_c' => 'أشيائي',
     'dropdown_d' => 'الخروج',
+    'dropdown_e' => 'عربة التسوق',
+    'dropdown_f' => 'لوحة التحكم',
     'brand' => 'الصفحة الرئيسية',
 
     'profile_a' => 'اسم الدخول',

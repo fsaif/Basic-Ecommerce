@@ -6,6 +6,8 @@ return [
     'dropdown_b' => 'New Item',
     'dropdown_c' => 'My Items',
     'dropdown_d' => 'Logout',
+    'dropdown_e' => 'My Cart',
+    'dropdown_f' => 'Dashboard',
     'brand' => 'Homepage',
 
     'profile_a' => 'Login Name',

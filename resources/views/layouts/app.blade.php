@@ -29,7 +29,18 @@
 
     <!-- custom style -->
     <link href="{{ asset('css/uikit.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)"/>
+
+    <!-- ==== FONTS ==== -->
+    @if(app()->getLocale() == 'ar')
+        <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+        <!-- Arabic Font Style -->
+        <style>
+            body {
+                font-family: 'Tajawal', sans-serif;
+            }
+        </style>
+    @endif
 
 </head>
 <body>
@@ -38,13 +49,13 @@
         @guest
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                @foreach (config('translatable.locales') as $lang => $language)
-                    @if($lang != app()->getLocale())
+                    @foreach (config('translatable.locales') as $lang => $language)
+                        @if($lang != app()->getLocale())
                             <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                 {{ $language }}
                             </a>
-                    @endif
-                @endforeach
+                        @endif
+                    @endforeach
                 </li>
 
                 <li class="nav-item dropdown">
@@ -77,16 +88,31 @@
 
         @else
             <ul class="nav justify-content-start">
-                <li class="nav-item">
+
                 @foreach(config('translatable.locales') as $lang => $language)
                     @if($lang != app()->getLocale())
-                        <li>
+                        <li class="nav-item">
                             <a href="{{ route('lang.switch', $lang) }}" class="nav-link">
                                 {{ $language }}
                             </a>
                         </li>
                     @endif
                 @endforeach
+
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        {{$dd}}
+                    </a>
+                    <ul class="dropdown-menu">
+                        @foreach ($currencies as $currency)
+                            <li>
+                                <a href="{{ route('changeCurrency', $currency->currencyID) }}" class="nav-link">
+                                    {{ $currency->shortcut }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link px-0">
@@ -102,7 +128,7 @@
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
 
                         <a class="dropdown-item"
-                           href="{{ route('mycart.route') }}">my cart</a>
+                           href="{{ route('mycart.route') }}">@lang('app.dropdown_e')</a>
                         <a class="dropdown-item"
                            href="{{ route('myprofile.route') }}">@lang('app.dropdown_a')</a>
                         <a class="dropdown-item"
@@ -112,7 +138,7 @@
 
                         @role('super_admin')
                         <a class="dropdown-item"
-                           href="{{ route('dashboard') }}">Dashboard</a>
+                           href="{{ route('dashboard') }}">@lang('app.dropdown_f')</a>
                         @endrole
 
                         <a class="dropdown-item" href="{{ route('logout') }}"
