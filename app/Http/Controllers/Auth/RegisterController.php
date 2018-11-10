@@ -71,6 +71,7 @@ class RegisterController extends Controller
                 $user->email = $userSocial->getEmail();
                 $user->password = Hash::make(str_random(8));
                 $user->save();
+                $user->attachRole('user');
                 Auth::login($user);
                 return redirect()->route('home');
             }
