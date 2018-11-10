@@ -63,16 +63,18 @@
                                 @endif
                             </td>
                         </tr>
+                        <tr>
+                            <td colspan="2">
+                                <form method="post" action="{{ route('addToCart.route', $item->id) }}">
+                                    @csrf
+                                    <input type="number" name="quantity" min="1" value="1"/>
+                                    <input type="submit" value="add to cart" class="btn btn-sm btn-secondary"/>
+                                </form>
+                            </td>
+                        </tr>
 
                         </tbody>
                     </table>
-                    <form method="post" action="{{ route('addToCart.route', $item->id) }}">
-                        @csrf
-                        <input type="number" name="quantity" min="1" value="1"/>
-
-                        <input type="submit" value="add to cart" class="btn btn-sm btn-secondary"/>
-
-                    </form>
                 </div>
             </div>
         </div>

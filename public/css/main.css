@@ -45,6 +45,12 @@ body {
     color: #666;
 }
 
+#quantity {
+    width: 36px;
+    border: solid 1px green;
+    background-color: white;
+}
+
 
 
 

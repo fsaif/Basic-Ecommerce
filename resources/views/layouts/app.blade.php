@@ -26,6 +26,11 @@
     @endif
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+
+    <!-- custom style -->
+    <link href="{{ asset('css/uikit.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
 </head>
 <body>
 <div id="app">

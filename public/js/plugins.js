@@ -15,3 +15,15 @@ var liveDescription = function(event) {
     OutputDescripe.textContent = description.value;
 };
 
+var increasePrice = function (event) {
+    var quantity = document.getElementById('quantity');
+    quantity.value++;
+};
+
+var decreasePrice = function (event) {
+    var quantity = document.getElementById('quantity');
+    if (quantity.value > 0) {
+        quantity.value--;
+    }
+};
+
