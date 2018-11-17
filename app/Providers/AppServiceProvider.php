@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,15 +19,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
+
+        Schema::defaultStringLength(191);
+
         // Set the app locale according to the URL
         app()->setLocale($request->segment(1));
 
-        $user = User::where('username', $request->username)->first();
-        if ($user != NULL) {
-            if ($user->status == 1) {
-                abort(403);
-            }
-        }
+        // $user = User::where('username', $request->username)->first();
+        // if ($user != NULL) {
+        //     if ($user->status == 1) {
+        //         abort(403);
+        //     }
+        // }
 
         view()->composer('layouts.app', function ($view) {
             $categories = Category::getCategory()->get();
